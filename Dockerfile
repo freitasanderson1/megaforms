@@ -29,10 +29,13 @@ RUN adduser --disabled-password --no-create-home anderson && \
     chown -R anderson:anderson /data/web/media && \    
     chmod -R 755 /data/web/static && \
     chmod -R 755 /data/web/media && \
-    chmod -R +x /app
+    chmod 777 /app &&\
+    chmod 777 /app/*
 
 ENV PATH="/app:/app/venv/bin:$PATH"
 
 USER anderson
+
+RUN python manage.py collectstatic --noinput
 
 CMD ["sh","./build.sh"]
