@@ -1,0 +1,98 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}Repositório de Documentos - CECANE-TO{% endblock %}
+
+{% block content %}
+    <div class="container my-2 py-2 bg-white rounded-4" style="">
+        <div class="pb-2">
+
+             <p  class="fs-3 title" style="padding-left:16px;">Resoluções</p>
+             
+             <ul class="ul-docs" style="list-style-type:none;">
+                 {% for link in resolucoes %}
+                    <li>
+                        <a class="list-item" href="{{link.arquivo.url}}" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">
+                            <div class="card-documento p-3 rounded-4 shadow" style="">
+                                
+                                <span class="card-title">
+                                    <i class="fa-solid fa-file-lines fa-xl" style="color: #275902;"></i>
+                                    {{link.nome}}
+                                </span>
+                                <span class="card-text">
+                                    <a class="list-item" href="{{link.arquivo.url}}" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">
+                                        Clique para acessar
+                                    </a>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>       
+
+        <hr>
+        <br>
+
+        <div>
+
+            <p  class="fs-3 title" style="padding-left:16px;">Modelos de Documentos</p>
+            <p class="fs-6 title" style="padding-left:32px;">Documentos editáveis</p>
+            <ul class="ul-docs" style="list-style-type:none;">
+                {% for link in documentosEditaveis %}
+                    <li>
+                        <a class="list-item" href="{{link.arquivo.url}}" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">
+
+                            <div class="card-documento p-3 rounded-4 shadow" style="">
+                                
+                                <span class="card-title">
+                                    <i class="fa-solid fa-file-pen fa-xl" style="color: #275902;"></i>
+                                    {{link.nome}}
+                                </span>
+                                <span class="card-text">
+                                    <a class="list-item" href="{{link.arquivo.url}}" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">Clique para acessar</a>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+
+           </ul>
+       </div>   
+       <hr>
+       <br>
+
+        {% for tipo in tipos %}
+            {% if tipo.documentos %}
+                <p  class="fs-3 title" style="padding-left:16px;">{{tipo.nome}}</p>
+
+                <div>
+                    <ul class="ul-docs" style="list-style-type:none;">
+                        {% for documento in tipo.documento_set.all %}
+                            <li>
+                                <a class="list-item" href="{{documento.arquivo.url}}" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">
+
+                                    <div class="card-documento p-3 rounded-4 shadow" style="">
+                                        
+                                        <span class="card-title">
+                                            <i class="fa-solid fa-file-pen fa-xl" style="color: #275902;"></i>
+                                            {{documento.nome|truncatechars:150}}
+                                        </span>
+                                        <span class="card-text">
+                                            <a class="list-item" href="{{documento.arquivo.url}}" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">Clique para acessar</a>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div> 
+
+                <hr>
+                <br>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

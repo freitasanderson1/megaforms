@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Respostas{% endblock%}
+
+
+{% block content %}
+<div class="container justify-content-center w-100 card-body shadow-lg bg-light rounded px-4 pt-1 mt-4">
+
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            {% if message.tags == "success" %}
+            <div class="alert alert-success alert-dismissible fade show">{{ message|escape }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+            </div>
+            {% else %}
+            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|escape }}
+                <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close">X</button>
+            </div>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="container mt-4 mb-4">
+        <h1>Questionários Respondidos:</h1>
+
+        <br>
+
+        <div class="d-flex justify-content-center">
+
+            <h5>
+
+                Respostas para o questionário <i>{{respondidos.0.questionario.nome}}</i> de <i>{{respondidos.0.escola}}</i>
+
+            </h5>
+        </div>
+        
+        <div class="d-flex justify-content-center">
+            <h6>
+
+                Respondido por <i class="text-primary">{{quemCadastrou}}</i>
+
+            </h6>
+
+        </div>
+        
+        <br>
+
+        <ol>
+
+            {% for r in respondidos %}
+            <li>
+                <p>
+
+                    <b class="text-black">
+
+                        {{r.pergunta.descricao|safe}}
+                    </b>
+
+                    <br>
+
+                    Resposta:
+
+                    <b>
+                        <i>{{r.get_valor_display}}</i>
+
+                    </b>
+                </p>
+
+            </li>
+
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+
+
+
+{% endblock %}

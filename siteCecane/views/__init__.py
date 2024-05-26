@@ -1,0 +1,25 @@
+##BaseViews
+from siteCecane.views.baseViews.BasePermissoesView import BasePermissoesView
+
+#Páginas
+from siteCecane.views.site.CecaneIndexView import CecaneIndexView
+from siteCecane.views.site.EquipeView import EquipeView
+from siteCecane.views.site.NoticiasView import NoticiasView
+from siteCecane.views.site.SobreView import SobreView
+from siteCecane.views.site.RepositorioView import RepositorioView
+from siteCecane.views.site.PoliticaPrivacidadeView import PoliticaPrivacidadeView
+
+##Questionários
+from siteCecane.views.questionarios.QuestionariosIndexView import QuestionariosIndexView
+from siteCecane.views.questionarios.QuestionariosDetailView import QuestionariosDetailView
+from siteCecane.views.questionarios.RespostasEscolasIndexView import RespostasEscolasIndexView
+from siteCecane.views.questionarios.RespostasEscolasDetailView import RespostasEscolasDetailView
+from siteCecane.views.questionarios.RespostasComplexView import RespostasComplexView
+
+##Relatórios
+### Relatórios de Questionários
+from siteCecane.views.relatorios.questionarios.RelatoriosQuestionariosIndexView import RelatoriosQuestionariosIndexView
+from siteCecane.views.relatorios.questionarios.RelatoriosDetailView import RelatoriosDetailView
+from siteCecane.views.relatorios.questionarios.RelatoriosComplexosDetailView import RelatoriosComplexosDetailView
+###
+from siteCecane.views.relatorios.questionarios.ExportRespostasView import ExportRespostasView

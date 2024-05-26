@@ -1,0 +1,51 @@
+{% extends "admin/edit_inline/tabular.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block extrahead %}
+{{ block.super }}
+<link href="{% static 'django_summernote/summernote-bs4.css' %}" rel="stylesheet">
+<script src="{% static 'django_summernote/summernote-bs4.js' %}"></script>
+{% endblock %}
+
+{% block fieldset %}
+<fieldset class="module aligned {{ inline_admin_formset.opts.module }}">
+    {% if inline_admin_formset.formset.can_delete %}
+        <h2>
+            <span>
+                {% blocktrans with inline_admin_formset.opts.verbose_name_plural as verbose_name_plural %}
+                    {{ verbose_name_plural|capfirst }} <span class="nowrap">({{ inline_admin_formset.formset.total_form_count }} {{ inline_admin_formset.opts.verbose_name_plural }})</span>
+                {% endblocktrans %}
+            </span>
+        </h2>
+    {% endif %}
+
+    {% if inline_admin_formset.formset.empty_permitted and not inline_admin_formset.formset.has_changed %}
+        <p>{% trans "No items have been added yet." %}</p>
+    {% else %}
+        <table class="{{ inline_admin_formset.opts.table }} {{ inline_admin_formset.opts.table_auto_width }}">
+            <thead>
+            {% include "admin/edit_inline/tabular_header.html" %}
+            </thead>
+            <tbody class="summernote">
+            {% include "admin/edit_inline/tabular.html" %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% if inline_admin_formset.formset.can_order %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                $('table.{{ inline_admin_formset.opts.table }} tbody').sortable({
+                    update: function(event, ui) {
+                        $(this).find('tr').each(function(i) {
+                            $(this).find('input:hidden[id$="-ORDER"]').val(i);
+                        });
+                    }
+                });
+            });
+        </script>
+    {% endif %}
+</fieldset>
+
+{% endblock %}

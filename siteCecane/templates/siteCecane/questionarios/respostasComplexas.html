@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block title %}Questionários Respondidos{% endblock%}
+
+
+{% block content %}
+<div class="container justify-content-center w-100 card-body shadow-lg bg-light rounded px-4 pt-1 mt-4">
+ 
+    <div class="container mt-4 mb-4">
+        <div>
+
+            <h1>Quem Respondeu o <b>{{questionario.nome}}</b>:</h1>
+            <br>
+            <h6>Temos <b>{{totalPessoas}}</b> respostas vindo de <b>{{totalCidades}}</b> cidades do Tocantins.</h6>
+        </div>
+        <br>
+        <div>
+            {% for item in pessoas %}
+                <div>
+                    <h5>{{item.cidade}}</h5>
+                    <ul>
+                        {% for dado in item.dados %}
+                            <li> 
+                                <i>{{dado.pessoa.nome}} {{dado.pessoa.sobrenome}}</i> - <b>{{dado.pessoa.cargo}}</b> 
+                                <small type="button" class="text-primary btn " data-bs-toggle="modal" data-bs-target="#respostas{{dado.pessoa.id}}"><i>Clique para ver respostas</i></small>
+                            </li>
+
+                            {% include "siteCecane/questionarios/modais/modalRespostas.html" with elemento=dado %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+</div>     
+
+
+
+{% endblock %}

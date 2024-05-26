@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}Sobre{% endblock %}
+
+{% block content %}
+    <style>
+        .overlay {
+            height: 30rem;
+            width: 100%;
+            border-radius: 20px;
+            background-image:   linear-gradient(180deg, #25714650 0%, #6F6B0080 100%), url('{% static "assets/IMG/encontroCAE2023.png" %}');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;        
+            filter: drop-shadow(0px 4px 4px hsl(0deg 0% 0% / 25%));
+
+        }
+        #quemSomos{
+            font-size: 7rem;
+            font-weight: 600;
+            color: #F2F2F2;
+        }
+    </style>
+
+    <div class="container-fluid">
+        
+        <div class="overlay">
+            <div class="overlay-infos h-100 d-flex align-items-center justify-content-center">
+                <span id="quemSomos">Quem Somos</span>
+            </div>
+        </div>
+
+        <p class="text-muted" style="padding-left: 1.5rem;">Legenda: Foto encerramento Encontro dos CAEs da Região Norte em Outubro de 2023</p>
+
+        <br>
+        
+        <p style="padding-left: 1.5rem; padding-right:1.5rem;">Os Centros Colaboradores em Alimentação e Nutrição Escolar – CECANEs são unidades de referência e apoio constituídas, no âmbito das Instituições Federais de Ensino Superior – IFES, 
+            para desenvolver ações de interesse e necessidade do Programa Nacional de Alimentação Escolar – PNAE, com estrutura e equipe para execução das atividades nas áreas prioritárias 
+            e nas formas de atuação definidas pelo FNDE.
+        </p>
+        
+        <p style="padding-left: 1.5rem; padding-right:1.5rem;">
+            O Centro Colaborador em Alimentação e Nutrição Escolar da Universidade Federal do Tocantins, atua desde 2016 em parceria com o FNDE prestando atendimento às entidades executoras do Estado do Tocantins. 
+            Neste período o Cecane já alcançou por meio da execução dos serviços e ações prestadas cerca de 83% dos municípios do estado.
+        </p>
+
+        <br>
+
+        <h4 style="color:#275902; padding-left: 1.5rem;">Nosso Objetivo</h4>
+
+        <p style="padding-left: 2rem; padding-right:2rem;">
+            Fazer a assessoria e monitoramento na execução do PNAE junto ao Estado e a Municípios do Tocantins, por meio do apoio técnico e operacional a todos os atores envolvidos na execução do Programa para sua melhor execução.
+        </p>
+
+    </div>
+{% endblock%}

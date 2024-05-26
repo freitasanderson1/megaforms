@@ -1,0 +1,1 @@
+from cadastro.forms.cadastroForm import CadastroForm

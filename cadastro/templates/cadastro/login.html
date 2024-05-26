@@ -1,0 +1,100 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}Entrar{% endblock %}
+
+{% block content %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show">
+                    <span style="color:#fff;">
+                        {{ message|escape }}
+
+                    </span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+                </div>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="container bg-white d-flex align-items-center justify-content-center h-100" style="border-radius:52px;">
+
+
+
+    <div class="logoLogin">
+
+        <img class="logoImg" src="{% static 'assets/IMG/LogoTelaLogin.png' %}" alt="Logo Nutricionistas">
+    </div>
+
+
+    <div class="containerLogin">
+        <div class="segunda-Logo pb-4">
+
+            <a class="link-topbar d-flex align-items-center" href="{% url 'siteCecane:indexSite' %}">
+                
+                <div class=" d-flex align-items-center">
+                    <img id="logo_nav"src="{%static 'assets/IMG/logoCECANE.png' %}" width="50" alt="Logo Cecane">
+                    
+                    <p class="fs-4" style="padding-left:16px;margin-bottom: 0px;">
+                        Cecane
+                    </p>
+                    
+                </div>
+                
+            </a>
+        </div>
+        
+
+        <form method="post" class="mb-3" validate>
+            {% csrf_token %}
+
+            <div class="d-flex flex-column align-items-center col" style="">
+                {% for field in form %}
+
+                            {% if field.name == 'username' %}
+
+                                <div class="form-floating mt-4 mb-4">
+                                    <input type="name" name="{{ field.name }}" class="form-control mb-0" id="floatingInputCPF" maxlength="11" placeholder="00000000" style="min-width:150px; background-color:#F2F2F2; border-radius:20px;" required pattern="[0-9]{11}">
+                                    <label for="floatingInputCPF" style="color:#275902;">CPF<small><i>(Somente números):</i></small></label>
+                                </div>
+
+                            {% else %}
+
+                                <div class="form-floating mt-4 mb-4">
+                                    <input type="password" name="{{ field.name }}" class="form-control mb-0" id="floatingInputPassword" placeholder="*********" style="min-width:150px; background-color:#F2F2F2; border-radius:20px;" minlenght="8" maxlength="20" required>
+                                    <label for="floatingInputPassword" style="color:#275902;">{{ field.label_tag }}</label>
+                                </div>
+
+                            {% endif %}
+
+
+                            {% if field.errors %}
+                                <ul>
+
+                                    <b>
+
+                                        <small style="color:#b00000; font-size:12px;">{{ field.errors|striptags }}</small>
+                                    </b>
+                                </ul>
+
+                            {% endif %}
+
+                {% endfor %}
+                <button type="submit" class="btn btn-entrar px-5" style="font-size:18px; background-color:#B0D91B; color:#132704; font-weight:500; border-radius:20px;">Entrar</button>
+                <br>
+                <small class="">Não tem conta? <a class="py-1 px-3" href="{% url 'siteCecane:cadastro' %}" style="background-color:#B0D91B; font-weight:400; color:#132704; border-radius:20px; text-decoration:none;">Cadastre-se</a></small>
+                <br>
+                <small class="">Não lembra a senha? <a href="#" class="py-1 px-3" style="background-color:#275902; font-weight:400; color:#FFFFFF; border-radius:20px; text-decoration:none;">Recupere aqui.</a></small>
+            </div>
+
+
+
+            
+        </form>
+
+    </div>
+</div>
+
+{% endblock%}
