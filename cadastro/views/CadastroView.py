@@ -32,7 +32,7 @@ class CadastroView(CreateView):
 
             if check_existe_usuario:
                 messages.add_message(request, messages.ERROR, 'Ocorreu um erro ao realizar seu cadastro, um usuário com este CPF já existe!')
-                return redirect('siteCecane:cadastro')
+                return redirect('questionario:cadastro')
 
             print(request.POST)
 
@@ -50,7 +50,7 @@ class CadastroView(CreateView):
             if senha != senhaConfirma:
                 print('Senha não é igual')
                 messages.add_message(request, messages.ERROR, 'Ocorreu um erro ao realizar seu cadastro, as senhas não são iguais!')
-                return redirect('siteCecane:cadastro')
+                return redirect('questionario:cadastro')
 
             else:
                 senha_criptografada = make_password(password=request.POST['senha'], salt=None, hasher='pbkdf2_sha256')
@@ -86,7 +86,7 @@ class CadastroView(CreateView):
         if usuario.is_authenticated:
 
             print(f'Usuario: {usuario.id}')
-            return redirect('siteCecane:indexSite')
+            return redirect('questionario:indexSite')
 
 
 
@@ -95,4 +95,4 @@ class CadastroView(CreateView):
     def form_valid(self, form):
 
 
-        return redirect('siteCecane:login')
+        return redirect('questionario:login')

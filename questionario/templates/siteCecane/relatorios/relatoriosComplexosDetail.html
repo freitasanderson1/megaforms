@@ -1,0 +1,63 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Relatório - {{questionario.nome}}{% endblock%}
+
+
+{% block content %}
+    <div>
+        <hr>
+    </div>
+    {% if ehEstagiario or ehGestor or ehSuperUser%}
+
+        <div id="custom_carousel" class="carousel slide .bg-light" data-bs-interval="false" data-ride="carousel" data-pause="hover">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container justify-content-center w-100 card-body shadow-lg bg-light rounded px-4 pt-1">
+                        <h3 class="card-header ml-3 my-2 mx-2">Relatório {{questionario.get_tipoDoQuestionario_display}} - {{questionario.nome}}:</h3>
+
+                        {% for relatorio in relatorios %}
+                            <div class="container card d-flex align-items-center flex-column mb-4">
+                                <div>
+
+                                    <h5 class="card-title">
+                                        {{forloop.counter}}) {{relatorio.questao}}
+                                    </h5>
+
+                                </div>
+
+                                <div class="card-body d-flex justify-content-center w-100">
+
+                                    <h6 class="card-text" style="margin-inline: 10px;">
+                                        Sim = {{relatorio.respostasSim}}
+                                    </h6>
+
+                                    <h6 class="card-text" style="margin-inline: 10px;">
+                                        Não = {{relatorio.respostasNao}}
+                                    </h6>
+
+                                    <h6 class="card-text" style="margin-inline: 10px;">
+                                        Não se aplica = {{relatorio.respostasNSA}}
+                                    </h6>
+                                </div>
+
+                                <div>
+
+                                    {% include 'questionario/relatorios/includes/chartJsCanva.html' with id=forloop.counter sim=relatorio.respostasSim nao=relatorio.respostasNao nsa=relatorio.respostasNSA %}
+
+                                </div>
+
+                            </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    {% endif %}
+
+
+{% endblock %}

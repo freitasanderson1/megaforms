@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Questionário {{questionario.nome}}{% endblock%}
+
+
+{% block content %}
+
+	<div class="container mt-4 mb-4">
+		{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+					{% if message.tags == "success" %}
+						<div class="alert alert-success alert-dismissible fade show text-black">{{ message|escape }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					{% else %}
+						<div class="alert alert-warning alert-dismissible fade show text-black" >{{ message|escape }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		{% endif %}
+
+		<div class="card card-questionario">
+			<h1 class="card-header text-black">Questionário {{questionario.get_tipoDoQuestionario_display}} - {{questionario.nome}}</h1>
+
+			<div class="card-body shadow-lg p-3 mb-5 bg-body border rounded">
+
+				{% if questionario.tipoDoQuestionario == 0%}
+
+					{% include 'questionario/questionarios/includes/questionarios/questionarioEscolar.html' %}
+				
+				{% elif questionario.tipoDoQuestionario == 1 %}
+
+					{% include 'questionario/questionarios/includes/questionarios/questionarioCAE.html' %}
+
+				{% elif questionario.tipoDoQuestionario == 2 %}
+
+					{% include 'questionario/questionarios/includes/questionarios/questionarioAgricultor.html' %}
+
+				{% elif questionario.tipoDoQuestionario == 3 %}
+
+					{% include 'questionario/questionarios/includes/questionarios/questionarioGestaoAF.html' %}
+
+				{% endif %}
+
+			</div>
+			
+			<div class="card-footer d-flex justify-content-center">
+				<small><i>Questionário {{questionario.get_tipoDoQuestionario_display}} - {{questionario.nome}}</i></small>
+			</div>
+		</div>
+
+
+
+	</div>
+
+{% endblock %}

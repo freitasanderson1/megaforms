@@ -1,0 +1,91 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Relatorios{% endblock%}
+
+
+{% block content %}
+    <div>
+        <hr>
+    </div>
+    {% if ehEstagiario or ehGestor or ehSuperUser%}
+
+        <div id="custom_carousel" class="carousel slide .bg-light" data-bs-interval="false" data-ride="carousel" data-pause="hover">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container justify-content-center w-100 card-body shadow-lg bg-light rounded px-4 pt-1">
+                        <h3 class="ml-3">Relatórios Disponíveis:</h3>
+
+                        <div class="container d-flex justify-content-evenly mb-4">
+                        
+                        {% comment %} 
+
+                            <div class="">
+                                <h5>Escolares:</h5>
+
+                                <ol>
+
+                                    {% for q in questionario %}
+                                            <li>
+
+                                                <a class="text-black" href="{% url 'questionario:relatoriosDetail' slug=q.slug%}">
+                                                    {{q.nome}}
+                                                </a>
+
+                                            </li>
+
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                        {% endcomment %}
+
+                            <div class="">
+                                <h5>CAE:</h5>
+
+                                <ol>
+
+                                    {% for q in questionario %}
+                                        {% if q.tipoDoQuestionario == 1 %}
+                                            <li>
+
+                                                <a class="text-black" href="{% url 'questionario:relatoriosComplexosDetail' slug=q.slug%}">
+                                                    {{q.nome}}
+                                                </a>
+
+                                            </li>
+                                        {% endif %}
+
+                                    {% endfor %}
+                                </ol>
+                            </div>
+
+                            <div class="">
+                                <h5>Gestão Agricultura Familiar:</h5>
+
+                                <ol>
+
+                                    {% for q in questionario %}
+                                        {% if q.tipoDoQuestionario == 3 %}
+                                            <li>
+
+                                                <a class="text-black" href="{% url 'questionario:relatoriosComplexosDetail' slug=q.slug%}">
+                                                    {{q.nome}}
+                                                </a>
+
+                                            </li>
+                                        {% endif %}
+
+                                    {% endfor %}
+                                </ol>
+                            </div>
+
+                        </div> 
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
