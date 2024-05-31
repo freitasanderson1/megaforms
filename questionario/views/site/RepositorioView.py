@@ -11,18 +11,11 @@ class RepositorioView(BasePermissoesView,TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
 
-        documentos = Documento.objects.filter(tipo__ativo=True, ativo=True).exclude(tipo__nome='Links CAE').exclude(tipo__nome='Link Externo')
-
-        # print(f'Query: {documentos}')
-        tipos = TipoDocumento.objects.filter(tipo=0, ativo=True).exclude(nome="Resoluções").exclude(nome="Modelos de Documentos")
+        tipos = TipoDocumento.objects.filter(ativo=True)
 
         for tipo in tipos:
             tipo.documentos = tipo.documento_set.filter(ativo=True)
 
         context['tipos'] = tipos
-
-        context['resolucoes'] = documentos.filter(tipo__nome="Resoluções")
-        context['documentosEditaveis'] = documentos.filter(tipo__nome="Modelos de Documentos")
-
-
+        
         return context

@@ -3,9 +3,7 @@ from questionario.admin.questionarios.ItemQuestionarioAdmin import ItemQuestiona
 from questionario.admin.questionarios.QuemRespondeuAdmin import QuemRespondeuAdmin
 from questionario.admin.questionarios.TipoQuestionariosAdmin import TipoQuestionarioAdmin
 from questionario.admin.questionarios.OpcoesItemQuestionarioAdmin import OpcoesItemQuestionarioAdmin
-from questionario.admin.questionarios.RespostaAdmin import RespostasAdmin
-from questionario.admin.questionarios.RespostaQuestionarioAdmin import RespostasQuestionarioAdmin
-# from questionario.admin.questionarios.RespostaAlternativaAdmin import RespostasAlternativoAdmin
+from questionario.admin.questionarios.RespostasAdmin import RespostasAdmin
 ########
 
 ###### Noticias

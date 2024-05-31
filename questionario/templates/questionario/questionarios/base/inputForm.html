@@ -1,0 +1,28 @@
+<div class="mb-3 {{ class }}">
+    <label class="form-label d-flex flex-column gap-1">
+        {% if type %}
+            {% if type == 'datetime' %}
+                {{ elemento.label }}
+                <input type="datetime-local" class="form-control" name="{{ elemento.name }}" value="{{ elemento.value|date:'c' }}" >
+            {% elif type == "date" %}
+                {{ elemento.label }}
+                <input type="date" class="form-control" name="{{ elemento.name }}" value="{{ elemento.value }}" >
+            {% elif type == "time" %}
+                {{ elemento.label }}
+                <input type="time" class="form-control" name="{{ elemento.name }}" value="{{ elemento.value }}" >
+            {% elif type == 'checkbox' %}
+                {{ elemento|safe }}  
+                {{ elemento.label }}
+            {% endif %}
+        {% else %}
+            <strong style="font-weight: 500;" class="d-block mb-1">{{ elemento.label }}</strong>
+                
+                    {{elemento}}
+                
+        {% endif %}
+
+        {% if elemento.help_text %}
+            <p id="emailHelp" class=" fs-8 form-text">{{ elemento.help_text }}</p>
+        {% endif %}              
+    </label>
+</div>

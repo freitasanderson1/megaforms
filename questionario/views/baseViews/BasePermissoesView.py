@@ -13,7 +13,7 @@ class BasePermissoesView(View):
         except:
             self.perfil = None
 
-        self.ehEstagiario = request.user.groups.filter(name="Estagiários_Cecane").exists()
+        self.ehEstagiario = request.user.groups.filter(name="Estagiários_MegaForms").exists()
         self.ehGestor = request.user.groups.filter(name="Questionário_Gestor").exists()
         self.ehSuperUser = request.user.is_superuser
         

@@ -4,7 +4,7 @@ from django.contrib.admin.options import StackedInline
 from questionario.models import ItemQuestionario, OpcoesItemQuestionario
 
 class OpcoesItemQuestionarioInline(StackedInline):
-    extra = 1
+    extra = 0
     model = OpcoesItemQuestionario
 
 @admin.register(ItemQuestionario)

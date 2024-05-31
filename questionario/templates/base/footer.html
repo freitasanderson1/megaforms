@@ -1,70 +1,8 @@
 {% load static %}
 
-{% include "questionario/modais/modalContatosPnae.html" %}
-
-<footer class="footer-container container">  
-  <div class="row py-4 d-flex align-items-center">
-  
-    <div class="col-md-12 text-center">
-      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/cecaneuft/" role="button" style="border:solid 1px #488c03;"><i class="fab fa-instagram" style="color: #488c03;"></i></a>
-      <a class="btn btn-outline-light btn-floating m-1" href="mailto:cecane.to@uft.edu.br?subject=Oi Cecane" role="button" style="border:solid 1px #488c03;"><i class="fas fa-envelope" style="color: #488c03;"></i></a>
-    </div>
-
-  </div>
-
-  <div class="d-flex justify-content-between align-items-start pt-2">
-    <div class="row">
-
-      <div class="col mx-auto mb-4 col-footer">
-        <h6 class="fw-semibold link-footer">Assuntos</h6>
-        <ul class="list-unstyled mb-0">
-
-          <li><a class="link-footer" href="{% url 'questionario:indexSite' %}">Início</a></li>
-          <li><a class="link-footer" href="{% url 'cafe:cafeIndex' %}">Cafe</a></li>
-          <li><a class="link-footer" href="{% url 'questionario:noticias' %}">Noticias</a></li>
-          <li><a class="link-footer" href="#">Eventos</a></li>
-          <li><a class="link-footer" href="{% url 'questionario:equipe' %}">Equipe</a></li>
-          <li><a class="link-footer" href="{% url 'questionario:sobre' %}">Sobre</a></li>
-          <li><a class="link-footer" href="{% url 'questionario:politicaPrivacidade' %}">Política de Privacidade</a></li>
-
-        </ul>
-      </div>
-
-      <div class="col mx-auto mb-4 col-footer">
-        <h6 class="fw-semibold link-footer">Informação</h6>
-
-        <ul class="list-unstyled mb-0 ">
-          <li><a class="link-footer" aria-current="page" href="https://www.gov.br/fnde/pt-br" target="_blank">Portal FNDE</a></li>
-          <li><a class="link-footer" href="https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/programas/pnae" target="_blank">Programa
-              PNAE</a></li>
-          <li><a class="link-footer" href="https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/programas/pnae/informanutri" target="_blank">Informa
-              Nutri</a></li>
-          <li><a class="link-footer" href="https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/programas/pnae/manuais-e-cartilhas/copy_of_Cadernodelegislao_PNAE_2023.pdf" target="_blank">Legislação</a>
-          </li>
-          <li><a class="link-footer" data-bs-toggle="modal" data-bs-target="#contatosPnae">Contatos</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col mx-auto mb-4 col-footer">
-        <h6 class="fw-semibold link-footer">REBRAE</h6>
-        <ul class="list-unstyled mb-0">
-          <li><a class="link-footer" aria-current="page" href="https://rebrae.com.br" target="_blank">Portal</a>
-          </li>
-          <li><a class="link-footer" href="https://rebrae.com.br/sobre-nos/#centros" target="_blank">Centros</a></li>
-          <li><a class="link-footer" href="https://rebrae.com.br/programa-nacional-de-alimentacao-escolar/" target="_blank">Atuação</a>
-          </li>
-          <li><a class="link-footer" href="https://rebrae.com.br/noticias/" target="_blank">Notícias</a></li>
-          <li><a class="link-footer" href="https://rebrae.com.br/#contato" target="_blank">Contato</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-  </div>
-
+<footer>  
   <div class="text-center p-1">
-    <p class="link-footer">© Equipe CECANE | {%now "Y"%}
+    <p class="link-footer">© Equipe MegaForms | {%now "Y"%}
     </p>
   </div>
 

@@ -5,7 +5,7 @@ from django.http.response import HttpResponse
 
 from django.views.generic import ListView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from questionario.models import TipoQuestionario, ItemQuestionario, RespostasQuestionario,RespostasAlternativoQuestionario
+from questionario.models import TipoQuestionario, ItemQuestionario, Respostas
 
 from questionario.views import BasePermissoesView
 
@@ -22,14 +22,12 @@ class QuestionariosIndexView(LoginRequiredMixin,BasePermissoesView,TemplateView)
 
         if self.ehSuperUser or self.ehGestor:
 
-            context['respondidos'] = RespostasQuestionario.objects.all().order_by('questionario__id','escola')
-            context['respondidos2'] = RespostasAlternativoQuestionario.objects.all().order_by('questionario__id')
+            context['respondidos'] = Respostas.objects.all().order_by('questionario__id','escola')
 
                 
         else:
 
-            context['respondidos'] = RespostasQuestionario.objects.filter(quemCadastrou=self.request.user).order_by('questionario__id','escola')
-            context['respondidos2'] = RespostasAlternativoQuestionario.objects.all().order_by('questionario__id')
+            context['respondidos'] = Respostas.objects.filter(quemCadastrou=self.request.user).order_by('questionario__id','escola')
 
         context['questionariosRespondidos'] = []
 

@@ -2,7 +2,7 @@ from questionario.views import BasePermissoesView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
-from questionario.models import RespostasAlternativoQuestionario, TipoQuestionario, ItemQuestionario,QuemRespondeu
+from questionario.models import Respostas, TipoQuestionario, ItemQuestionario,QuemRespondeu
 class Object(object):
     questao = ''
     respostasSim = 0
@@ -20,7 +20,7 @@ class RelatoriosComplexosDetailView(LoginRequiredMixin,BasePermissoesView,Templa
 
         perguntas = ItemQuestionario.objects.filter(questionario__slug=questionario_slug)
 
-        respostas = RespostasAlternativoQuestionario.objects.filter(questionario__slug=questionario_slug)
+        respostas = Respostas.objects.filter(questionario__slug=questionario_slug)
 
         context['questionario'] = perguntas[0].questionario
         context['perguntas'] =  perguntas

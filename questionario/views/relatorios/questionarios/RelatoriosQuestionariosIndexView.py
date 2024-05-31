@@ -2,7 +2,7 @@ from questionario.views import BasePermissoesView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 
-from questionario.models import RespostasQuestionario, TipoQuestionario, RespostasAlternativoQuestionario
+from questionario.models import TipoQuestionario, Respostas
 class RelatoriosQuestionariosIndexView(LoginRequiredMixin,BasePermissoesView,ListView):
     template_name ='questionario/relatorios/indexRelatorios.html'
     queryset = []
@@ -12,7 +12,7 @@ class RelatoriosQuestionariosIndexView(LoginRequiredMixin,BasePermissoesView,Lis
 
         # respondidos = RespostasQuestionario.objects.all().order_by('questionario__id','escola')
 
-        respondidos2 = RespostasAlternativoQuestionario.objects.all().order_by('questionario__id','-dataCadastro')
+        respondidos2 = Respostas.objects.all().order_by('questionario__id','-dataCadastro')
 
         slugs_questionario = list()
 

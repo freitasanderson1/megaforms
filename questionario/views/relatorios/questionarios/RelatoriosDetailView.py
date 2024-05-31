@@ -2,7 +2,7 @@ from questionario.views import BasePermissoesView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
-from questionario.models import RespostasQuestionario, TipoQuestionario, ItemQuestionario
+from questionario.models import Respostas, TipoQuestionario, ItemQuestionario
 class Object(object):
     questao = ''
     respostasSim = 0
@@ -22,7 +22,7 @@ class RelatoriosDetailView(LoginRequiredMixin,BasePermissoesView,TemplateView):
 
         perguntas = ItemQuestionario.objects.filter(questionario=questionario)
 
-        respostas = RespostasQuestionario.objects.filter(questionario=questionario)
+        respostas = Respostas.objects.filter(questionario=questionario)
 
         context['questionario'] = questionario
         context['perguntas'] =  perguntas
@@ -37,9 +37,9 @@ class RelatoriosDetailView(LoginRequiredMixin,BasePermissoesView,TemplateView):
 
             questoes = Object()
             questoes.questao = f'{pergunta.descricao}'
-            questoes.respostasSim = len(RespostasQuestionario.objects.filter(questionario=questionario,pergunta=pergunta,valor=1))
-            questoes.respostasNao = len(RespostasQuestionario.objects.filter(questionario=questionario,pergunta=pergunta,valor=0))
-            questoes.respostasNSA = len(RespostasQuestionario.objects.filter(questionario=questionario,pergunta=pergunta,valor=2))
+            questoes.respostasSim = len(Respostas.objects.filter(questionario=questionario,pergunta=pergunta,valor=1))
+            questoes.respostasNao = len(Respostas.objects.filter(questionario=questionario,pergunta=pergunta,valor=0))
+            questoes.respostasNSA = len(Respostas.objects.filter(questionario=questionario,pergunta=pergunta,valor=2))
         
             relatorios.append(questoes)
 

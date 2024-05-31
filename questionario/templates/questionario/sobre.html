@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}Sobre{% endblock %}
+
+{% block content %}
+    <style>
+        .overlay {
+            height: 30rem;
+            width: 100%;
+            border-radius: 20px;
+            background-image:   linear-gradient(180deg, #8C52FF 0%, #5D17EB 100%);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;        
+            filter: drop-shadow(0px 4px 4px hsl(0deg 0% 0% / 25%));
+
+        }
+        #quemSomos{
+            font-size: 7rem;
+            font-weight: 600;
+            color: #F2F2F2;
+        }
+    </style>
+
+    <div class="container-fluid">
+        
+        <div class="overlay">
+            <div class="overlay-infos h-100 d-flex align-items-center justify-content-center">
+                <span id="quemSomos">Quem Somos</span>
+            </div>
+        </div>
+
+        <br>
+        
+        <p style="padding-left: 1.5rem; padding-right:1.5rem;">
+            O Sistema de Questionários – MegaForms é uma plataforma inovadora desenvolvida para facilitar a criação, distribuição e análise de questionários, oferecendo suporte a instituições educacionais, governamentais e corporativas na coleta de dados essenciais para diversas iniciativas e programas.
+        </p>
+        
+        <h4 style="color:#275902; padding-left: 1.5rem;">Nosso Objetivo</h4>
+        
+        <p style="padding-left: 2rem; padding-right:2rem;">
+            Facilitar a criação e análise de questionários, proporcionando apoio técnico e operacional a instituições e entidades para que possam obter dados precisos e relevantes, contribuindo para uma melhor tomada de decisões e execução de programas e projetos.
+        </p>        
+
+    </div>
+{% endblock%}

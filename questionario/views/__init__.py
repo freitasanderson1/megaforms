@@ -2,7 +2,7 @@
 from questionario.views.baseViews.BasePermissoesView import BasePermissoesView
 
 #Páginas
-from questionario.views.site.CecaneIndexView import CecaneIndexView
+from questionario.views.site.MegaFormsIndexView import MegaFormsIndexView
 from questionario.views.site.EquipeView import EquipeView
 from questionario.views.site.NoticiasView import NoticiasView
 from questionario.views.site.SobreView import SobreView
@@ -12,9 +12,6 @@ from questionario.views.site.PoliticaPrivacidadeView import PoliticaPrivacidadeV
 ##Questionários
 from questionario.views.questionarios.QuestionariosIndexView import QuestionariosIndexView
 from questionario.views.questionarios.QuestionariosDetailView import QuestionariosDetailView
-from questionario.views.questionarios.RespostasEscolasIndexView import RespostasEscolasIndexView
-from questionario.views.questionarios.RespostasEscolasDetailView import RespostasEscolasDetailView
-from questionario.views.questionarios.RespostasComplexView import RespostasComplexView
 
 ##Relatórios
 ### Relatórios de Questionários

@@ -2,7 +2,7 @@ from questionario.views import BasePermissoesView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
-from questionario.models import RespostasAlternativoQuestionario, TipoQuestionario, ItemQuestionario,QuemRespondeu
+from questionario.models import Respostas, TipoQuestionario, ItemQuestionario,QuemRespondeu
 
 import pandas as pd
 
@@ -26,7 +26,7 @@ class ExportRespostasView(LoginRequiredMixin,BasePermissoesView,TemplateView):
 
         perguntas = ItemQuestionario.objects.filter(questionario=objQuestionario,ativo=True)
 
-        pessoas = RespostasAlternativoQuestionario.objects.filter(questionario=objQuestionario).values('quemRespondeu')
+        pessoas = Respostas.objects.filter(questionario=objQuestionario).values('quemRespondeu')
 
         listPessoas = list()
         [listPessoas.append(pessoa.get('quemRespondeu')) for pessoa in pessoas]

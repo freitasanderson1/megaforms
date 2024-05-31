@@ -1,0 +1,248 @@
+
+html{
+    font-family: 'Nunito', sans-serif;
+    color: #8C52FF;
+    height: 100%;
+}
+body{
+    background-color: #F2F2F2;
+    height: 100%;
+}
+footer{
+    bottom: 0;
+}
+#main{
+    height: 100%;
+}
+a:visited{
+    color: #8C52FF;
+}
+a:hover{
+    color: #8C52FF;
+}
+.topbar{
+    padding-top: 2.5vh;
+}
+.link-footer{
+    font-weight: 300;
+    text-decoration: None;
+    color: #8C52FF;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.link-topbar{
+    font-weight: 500;
+    text-decoration: None;
+    color: #8C52FF;
+}
+.carousel-img{
+    width: 100%;
+    height: 50vh;
+    filter: grayscale(20%);
+    overflow: hidden;
+}
+.carousel, .carousel-inner, .carousel-item{
+    border-radius: 52px;
+    height: 40vh;
+}
+.card{
+    height: 30vh;
+    width: 30%;
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: 39px;
+}
+.card-title{
+    font-weight: 900;
+    color: #8C52FF;
+}
+.card-text{
+    font-weight: 500;
+    color: #636760;
+}
+
+.card-questionario{
+    width: 100%;
+}
+.btn-noticias{
+    background-color: #7a35f2;
+}
+.btn-success {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #5D17EB;
+    --bs-btn-border-color: #5D17EB;
+}
+
+.btn-outline-success {
+    --bs-btn-color: #5D17EB;
+    --bs-btn-border-color: #5D17EB;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #5D17EB;
+    --bs-btn-hover-border-color: #5D17EB;
+}
+.btn-equipe{
+    border: 2px solid;
+    border-color: #8C52FF;
+    color: #8C52FF;
+
+}
+.title{
+    font-weight: 500;
+    color: #8C52FF;
+}
+.menu-topbar{
+    margin-right: 5rem;
+    .link-topbar{
+        font-size: 1.2rem;
+        margin-inline-start: 1rem;
+    }
+}
+.menu-topbar-mobile{
+    display: none;
+
+    margin-right: 5rem;
+    .link-topbar{
+        font-size: 1.2rem;
+        margin-inline-start: 1.1rem;
+    }
+}
+#botao-entrar{
+    background-color: #8C52FF;
+    color: #F5F5F5;
+    border-radius: 16px;
+
+}
+#botao-sair{
+    background-color: #59024a;
+    color: #F5F5F5;
+    border-radius: 8px;
+}
+
+.imgPerfil{
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+#lista-perfil{
+    top: 5rem;
+    border: solid 1px #57038c;
+    border-radius: 16px;
+    position: absolute;
+    z-index: 2;
+    background-color: #F2F2F2;
+    ul{
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        li{
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+}
+.logoLogin{
+    .logoImg{
+        width: 30vw;
+    }
+}
+.containerLogin{
+    width: 30vw;
+}
+.p-sobre{
+    padding-left: 2rem; 
+    padding-right:2rem;
+}
+.swiper-wrapper{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+
+}
+.card-documento{
+    width: 100%; 
+    max-height:6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+@media (orientation: portrait){
+    .topbar{
+        margin: 0;
+    }
+
+    .menu-topbar{
+        display: none;
+    }
+
+    .menu-topbar-mobile{
+        display: flex;
+        margin: 0;
+        width: 50vw;
+        padding-left: 10vw;
+
+    }
+
+    #button-menu-mobile{
+        margin-top: 5px;
+        color: #57038c;
+    }
+
+    .link-topbar-mobile{
+        text-decoration: None;
+        max-width: auto;
+    
+    }
+
+    #user_bar{
+        display: none;
+    }
+    
+    #container-noticias{
+        flex-direction: column;
+    }
+    .card{
+        height: 35vh;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .logoLogin{
+        display: none;
+    }
+    .containerLogin{
+        width: 90vw;
+    }
+    .segunda-Logo{
+        display: none;
+    }
+    .logoCadastro{
+        display: none;
+    }
+    #dddCadastro{
+        width:30vw;
+    }
+    #telefoneCadastro{
+        width: 55vw;
+    }
+    .col-footer{
+        min-width: 95vw;
+        text-align: center;
+    }
+    .p-sobre{
+        padding: 0;
+    }
+    .swiper-wrapper{
+        padding: 0;
+    }
+    .card-documento{
+        width: 100%; 
+        max-height:10rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .ul-docs{
+        padding: 0;
+    }
+}

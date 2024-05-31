@@ -95,7 +95,7 @@ class ItemQuestionarioInline(admin.TabularInline):
 
 @admin.register(TipoQuestionario)
 class TipoQuestionarioAdmin(ModelAdmin):
-    list_display = ('id','nome','tipoDoQuestionario','slug','ativo')
+    list_display = ('id','nome','slug','ativo')
     inlines = [
         ItemQuestionarioInline,
     ]

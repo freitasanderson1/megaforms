@@ -1,0 +1,1400 @@
+<form method="post" validate>
+    {% csrf_token %}
+
+
+            <div class="container d-block justify-content-center ">
+                <div>
+                    <div class="row g-2">
+
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input name="nome" type="text" class="form-control border-secondary" id="floatingInputGrid" minlength="5" maxlength="50" placeholder=" " value="" required>
+                                <label for="floatingInputGrid">Nome Completo</label>
+                            </div>
+
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-md">
+
+                            <div class="form-floating">
+                                <input name="telefone" type="tel" class="form-control border-secondary" minlenght="10" maxlength="11" id="floatingInput" placeholder="Exemplo: 63999397825 ou 6332294500" pattern="[0-9]{10-11}" required>
+                                <label for="floatingInput">Telefone</label>
+                                <small class="ml-4 text-muted">DDD e Número. Exemplo:<i> 63999397825 ou 6332294500.</i></small>
+                            </div>
+                        </div>
+
+                        <div class="col-8" style="min-width: 268px;">
+                            <div class="form-floating">
+                                <input name="email" type="email" class="form-control border-secondary" id="floatingInput" placeholder="name@example.com" required>
+                                <label for="floatingInput">Email</label>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row g-2">
+
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input name="cidade" type="text" class="form-control border-secondary" id="floatingInputGrid" minlength="5" maxlength="50" placeholder=" " value="" required>
+                                <label for="floatingInputGrid">Cidade</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input name="cargo" type="text" class="form-control border-secondary" id="floatingInputGrid" minlength="3" maxlength="50" placeholder=" " value="" required>
+                                    <label for="floatingInputGrid">Profissão</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input name="dataAniversario" type="date" class="form-control border-secondary" maxlength="10" id="floatingInput" placeholder=" ">
+                                <label for="floatingInput">Data de Nascimento</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <label for="1" class="form-label fs-5 text-black">1) Qual seu grau de escolaridade?</label>
+
+                        <div class="d-block" style="max-width: 80vw;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="1-0" name="1" value="Sem escolaridade" required>
+                                <label class="form-check-label fs-6 text-black" for="1-0">Sem escolaridade</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="1-1" name="1" value="Fundamental incompleto">
+                                <label class="form-check-label fs-6 text-black" for="1-1">Fundamental incompleto</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="1-2" name="1" value="Fundamental completo">
+                                <label class="form-check-label fs-6 text-black" for="1-2">Fundamental completo</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="1-3" name="1" value="Ensino médio incompleto">
+                                <label class="form-check-label fs-6 text-black" for="1-3">Ensino médio incompleto</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="1-4" name="1" value="Ensino Médio completo">
+                                <label class="form-check-label fs-6 text-black" for="1-4">Ensino Médio completo</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="1-5" name="1" value="Ensino Superior incompleto">
+                                <label class="form-check-label fs-6 text-black" for="1-5">Ensino Superior incompleto</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="1-6" name="1" value="Ensino Superior completo">
+                                <label class="form-check-label fs-6 text-black" for="1-6">Ensino Superior completo</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="1-7" name="1" value="Pós graduado">
+                                <label class="form-check-label fs-6 text-black" for="1-7">Pós graduado</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="2" class="form-label fs-5 text-black">2) Possui vínculo empregatício no município?</label>
+
+                        <div class="">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="2-1" name="2" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="2-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="2-0" name="2" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="2-0">Não</label>
+                            </div>
+
+                        </div>
+                        <div id="2.1" class="ml-2 mb-3 d-none">
+                    
+                            <label for="2.1" class="form-label fs-5 text-black">2.1) Qual tipo vínculo empregatício no município?</label>
+
+                            <div class="">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input bg-secondary" type="radio" id="2.1-1" name="2.1" value="Concursado">
+                                    <label class="form-check-label fs-6 text-black" for="2.1-1">Concursado</label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input bg-secondary" type="radio" id="2.1-0" name="2.1" value="Contrato">
+                                    <label class="form-check-label fs-6 text-black" for="2.1-0">Contrato</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="3" class="form-label fs-5 text-black">3) Segmento que representa no CAE:</label>
+
+                        <div class="">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="3-0" name="3" value="Pais de alunos" required>
+                                <label class="form-check-label fs-6 text-black" for="3-0">Pais de alunos</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="3-1" name="3" value="Sociedade civil">
+                                <label class="form-check-label fs-6 text-black" for="3-1">Sociedade civil</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="3-2" name="3" value="Trabalhadores da educação e discentes">
+                                <label class="form-check-label fs-6 text-black" for="3-2">Trabalhadores da educação e discentes</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="3-3" name="3" value="Poder Executivo">
+                                <label class="form-check-label fs-6 text-black" for="3-3">Poder Executivo</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="4" class="form-label fs-5 text-black">4) Você é um Membro:</label>
+
+                        <div class="d-block" style="max-width: 80vw;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="4-0" name="4" value="Titular" required>
+                                <label class="form-check-label fs-6 text-black" for="4-0">Titular</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="4-1" name="4" value="Suplente">
+                                <label class="form-check-label fs-6 text-black" for="4-1">Suplente</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="5" class="form-label fs-5 text-black">5) Qual o seu tempo em exercício no CAE?</label>
+
+                        <div class=" ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="5-1" name="5" value="Menos de 1 ano" required>
+                                <label class="form-check-label fs-5 text-black" for="5-1">Menos de 1 ano</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="5-0" name="5" value="Entre 1 ano a 2 anos">
+                                <label class="form-check-label fs-5 text-black" for="5-0">Entre 1 ano a 2 anos</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="5-2" name="5" value="Entre 3 a 4 anos">
+                                <label class="form-check-label fs-5 text-black" for="5-2">Entre 3 a 4 anos</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="5-3" name="5" value="Mais de 4 anos">
+                                <label class="form-check-label fs-5 text-black" for="5-3">Mais de 4 anos</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="6" class="form-label fs-5 text-black">6) Participou em outros mandatos do CAE?</label>
+
+                        <div class=" ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="6-1" name="6" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="6-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="6-0" name="6" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="6-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="7" class="form-label fs-5 text-black">7) Participou de outros conselhos?</label>
+
+                        <div class=" ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="7-1" name="7" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="7-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="7-0" name="7" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="7-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="8" class="form-label fs-5 text-black">8) De quais conselhos?</label>
+
+                        <div class="d-flex justify-content-start ">
+
+                            <fieldset>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="8-0" name="8" value="Conselho Municipal do Fundeb">
+                                    <label class="form-label text-black" for="8-0">Conselho Municipal do Fundeb</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="8-1" name="8" value="Conselho Municipal de Assistência Social">
+                                    <label class="form-label text-black" for="8-1">Conselho Municipal de Assistência Social</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="8-2" name="8" value="Conselho Municipal de Educação">
+                                    <label class="form-label text-black" for="8-2">Conselho Municipal de Educação</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="8-3" name="8" value="Conselho Municipal de Saúde">
+                                    <label class="form-label text-black" for="8-3">Conselho Municipal de Saúde</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="8-4" name="8" value="Valorização dos Profissionais da Educação">
+                                    <label class="form-label text-black" for="8-4">Valorização dos Profissionais da Educação</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="8-5" name="8" value="Conselho Municipal da Criança e do Adolescente">
+                                    <label class="form-label text-black" for="8-5">Conselho Municipal da Criança e do Adolescente</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="8-6" name="8" value="Não faço parte de outro conselho">
+                                    <label class="form-label text-black" for="8-6">Não fiz parte de outro conselho</label>
+                                </div>
+
+                            </fieldset>
+
+                        </div>
+
+                        <div id="8.1" class="mb-3 d-none">
+                            <label for="8.1" class="form-label fs-5 text-black">8.1) Caso tenha respondido positivamente a questão anterior, você era ou é qual tipo de membro?</label>
+    
+                            <div class="row" style="max-width: 80vw;">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input bg-secondary" type="radio" id="8.1-0" name="8.1" value="Titular">
+                                    <label class="form-check-label fs-6 text-black" for="8.1-0">Titular</label>
+                                </div>
+    
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input bg-secondary" type="radio" id="8.1-1" name="8.1" value="Suplente">
+                                    <label class="form-check-label fs-6 text-black" for="8.1-1">Suplente</label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input bg-secondary" type="radio" id="8.1-1" name="8.1" value="Nenhuma das opções">
+                                    <label class="form-check-label fs-6 text-black" for="8.1-1">Nenhuma das opções</label>
+                                </div>
+    
+                            </div>
+    
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="9" class="form-label fs-5 text-black">9) Sua indicação para o CAE se deu através de:</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="9-1" name="9" value="Houve reunião/assembleia" required>
+                                <label class="form-check-label fs-6 text-black" for="9-1">Houve reunião/assembleia</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="9-0" name="9" value="Indicado(a) pela prefeitura">
+                                <label class="form-check-label fs-6 text-black" for="9-0">Indicado(a) pela prefeitura</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="9-2" name="9" value="Indicado(a) pelo(a) secretário(a) de educação">
+                                <label class="form-check-label fs-6 text-black" for="9-2">Indicado(a) pelo(a) secretário(a) de educação</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="9-3" name="9" value="Não sei">
+                                <label class="form-check-label fs-6 text-black" for="9-3">Não sei</label>
+                            </div>
+
+                            
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="10" class="form-label fs-5 text-black">10) Você conhece todos os membros titulares e suplentes do CAE?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="10-1" name="10" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="10-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="10-0" name="10" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="10-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="11" class="form-label fs-5 text-black">11) Quais as atribuições que você exerce como conselheiro de alimentação escolar?</label>
+
+                        <textarea name="11" type="textfield" class="form-control border-secondary" id="floatingInputGrid" required></textarea>
+    
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="12" class="form-label fs-5 text-black">12) O CAE possui regime de cooperação com o Conselho de Segurança Alimentar e Nutricional?</label>
+
+                        <div class="d-flex flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="12-0" name="12" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="12-0">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="12-1" name="12" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="12-1">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="12-2" name="12" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="12-2">Não sei informar</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="13" class="form-label fs-5 text-black">13) O CAE possui regime de cooperação com o Conselho Escolar?</label>
+
+                        <div class="d-flex flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="13-0" name="13" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="13-0">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="13-1" name="13" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="13-1">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="13-2" name="13" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="13-2">Não sei informar</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="14" class="form-label fs-5 text-black">14) O CAE possui Regimento Interno?</label>
+
+                        <div class="d-flex flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="14-0" name="14" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="14-0">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="14-1" name="14" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="14-1">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="14-2" name="14" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="14-2">Não sei informar</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="15" class="form-label fs-5 text-black">15) Você já leu o Regimento Interno?</label>
+
+                        <div class="d-flex flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="15-0" name="15" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="15-0">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="15-1" name="15" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="15-1">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="16" class="form-label fs-5 text-black">16) O CAE segue as normas do Regimento Interno?</label>
+
+                        <div class="d-flex flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="16-0" name="16" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="16-0">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="16-1" name="16" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="16-1">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="16-2" name="16" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="16-2">Não sei informar</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="17" class="form-label fs-5 text-black">17) O CAE possui ata para registro das reuniões?</label>
+
+                        <div class="d-flex flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="17-0" name="17" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="17-0">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="17-1" name="17" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="17-1">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="17-2" name="17" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="17-2">Não sei informar</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div id="17.1" class="mb-3 d-none">
+                        <label for="17.1" class="form-label fs-5 text-black">17.1) Todas as reuniões realizadas pelo CAE são registradas em ata?</label>
+
+                        <div class="d-flex flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="17.1-0" name="17.1" value="Sim">
+                                <label class="form-check-label fs-6 text-black" for="17.1-0">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="17.1-1" name="17.1" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="17.1-1">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="17.1-2" name="17.1" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="17.1-2">Não sei informar</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="ml-2 mb-3">
+                        <label for="18" class="form-label fs-5 text-black">18) Assinale os recursos que são disponibilizados pela prefeitura ao CAE?</label>
+
+                        <fieldset>
+
+                            <div>
+                                <input class="form-check-input bg-secondary" type="checkbox" id="18-0" name="18" value="Transporte para deslocamento dentro do município para visita às escolas">
+                                <label class="form-label text-black" for="18-0">Transporte para deslocamento dentro do município para visita às escolas</label>
+                            </div>
+
+                            <div>
+                                <input class="form-check-input bg-secondary" type="checkbox" id="18-1" name="18" value="Computador com internet">
+                                <label class="form-label text-black" for="18-1">Computador com internet</label>
+                            </div>
+
+                            <div>
+                                <input class="form-check-input bg-secondary" type="checkbox" id="18-2" name="18" value="Sala de reuniões">
+                                <label class="form-label text-black" for="18-2">Sala de reuniões</label>
+                            </div>
+
+                            <div>
+                                <input class="form-check-input bg-secondary" type="checkbox" id="18-3" name="18" value="Material de escritório (papel, caneta, pranjeta e outros)">
+                                <label class="form-label text-black" for="18-3">Material de escritório (papel, caneta, pranjeta e outros)</label>
+                            </div>
+
+                            <div>
+                                <input class="form-check-input bg-secondary" type="checkbox" id="18-4" name="18" value="Não oferta nada">
+                                <label class="form-label text-black" for="18-4">Não oferta nada</label>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                   
+                    <div class="mb-3">
+                        <label for="19" class="form-label fs-5 text-black">19) Houve troca ou desligamento de algum membro durante o decorrer deste mandato?</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="19-1" name="19" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="19-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="19-0" name="19" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="19-0">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="19-2" name="19" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="19-2">Não sei informar</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="19.1" class="mb-3 d-none">
+                        <label for="19.1" class="form-label fs-5 text-black">19.1) Qual o motivo?</label>
+
+                        <div class="d-flex flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="19.1-0" name="19.1" value="Mudança de cidade">
+                                <label class="form-check-label fs-6 text-black" for="19.1-0">Mudança de cidade</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="19.1-1" name="19.1" value="Questões de saúde">
+                                <label class="form-check-label fs-6 text-black" for="19.1-1">Questões de saúde</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="19.1-2" name="19.1" value="Falta de interesse">
+                                <label class="form-check-label fs-6 text-black" for="19.1-2">Falta de interesse</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="20" class="form-label fs-5 text-black">20) Você recebeu algum treinamento/capacitação ao entrar no CAE?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="20-1" name="20" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="20-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="20-0" name="20" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="20-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="ml-2 mb-3">
+                        <label for="21" class="form-label fs-5 text-black">21) Como você considera sua atuação no conselho?</label>
+
+                        <div class="row ">
+                            <div class="form-check form-check-inline">
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="radio" id="21-0" name="21" value="Atuante" required>
+                                    <label class="form-label text-black" for="21-0">Atuante</label>
+                                </div>
+                            </div>
+
+
+                            <div class="form-check form-check-inline">
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="radio" id="21-1" name="21" value="Pouco atuante">
+                                    <label class="form-label text-black" for="21-1">Pouco atuante</label>
+                                </div>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                            
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="radio" id="21-2" name="21" value="Não atuante">
+                                    <label class="form-label text-black" for="21-2">Não atuante</label>
+                                </div>
+                            </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="22" class="form-label fs-5 text-black">22) Você tem conhecimento das leis que regulamentam o Programa de Alimentação Escolar?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="22-1" name="22" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="22-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="22-0" name="22" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="22-0">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="22-2" name="22" value="Parcialmente" required>
+                                <label class="form-check-label fs-6 text-black" for="22-2">Parcialmente</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="22.1" class="ml-2 mb-3 d-none">
+                        <label for="22.1" class="form-label fs-5 text-black">22.1) Cite as leis que você tem conhecimento:</label>
+                        <input name="22.1" type="text" class="form-control border-secondary" id="floatingInputGrid" placeholder=" " value="">
+
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="23" class="form-label fs-5 text-black">23) Você reuniu com o conselho para fazer o parecer da prestação de contas do ano de 2022?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="23-1" name="23" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="23-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="23-0" name="23" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="23-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="23.1" class="mb-3 d-none">
+                        <label for="23.1" class="form-label fs-5 text-black">23.1) Quantos membros participaram?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="23.1-1" name="23.1" value="1 a 3" >
+                                <label class="form-check-label fs-6 text-black" for="23.1-1">1 a 3</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="23.1-0" name="23.1" value="4 a 5">
+                                <label class="form-check-label fs-6 text-black" for="23.1-0">4 a 5</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="23.1-2" name="23.1" value="6 a 7">
+                                <label class="form-check-label fs-6 text-black" for="23.1-2">6 a 7</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="23.1-3" name="23.1" value="Mais de 7">
+                                <label class="form-check-label fs-6 text-black" for="23.1-3">Mais de 7</label>
+                            </div>
+
+                            
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="24" class="form-label fs-5 text-black">24) Quem realizou o parecer da prestação de contas do município?</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="24-1" name="24" value="Presidente do CAE" required>
+                                <label class="form-check-label fs-6 text-black" for="24-1">Presidente do CAE</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="24-0" name="24" value="Técnico (a)* de suporte aos conselhos">
+                                <label class="form-check-label fs-6 text-black" for="24-0">Técnico (a)* de suporte aos conselhos</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="24-2" name="24" value="Técnico (a)* da SEMED">
+                                <label class="form-check-label fs-6 text-black" for="24-2">Técnico (a)* da SEMED</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="24-3" name="24" value="Setor Financeiro da prefeitura">
+                                <label class="form-check-label fs-6 text-black" for="24-3">Setor Financeiro da prefeitura</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="24-4" name="24" value="Setor Financeiro da prefeitura">
+                                <label class="form-check-label fs-6 text-black" for="24-4">Setor Financeiro da prefeitura</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="24-5" name="24" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="24-5">Não sei informar</label>
+                            </div>                            
+
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="25" class="form-label fs-5 text-black">25) Alguma destas pessoas chegou a participar da análise da prestação de contas/ Parecer conclusivo?</label>
+
+                        <div class="d-flex justify-content-start ">
+
+                            <fieldset>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="25-0" name="25" value="Membros do CAE">
+                                    <label class="form-label text-black" for="25-0">Membros do CAE</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="25-1" name="25" value="Nutricionista">
+                                    <label class="form-label text-black" for="25-1">Nutricionista</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="25-2" name="25" value="Secretario de educação">
+                                    <label class="form-label text-black" for="25-2">Secretario de educação</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="25-3" name="25" value="Financeiro da prefeitura">
+                                    <label class="form-label text-black" for="25-3">Financeiro da prefeitura</label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input bg-secondary" type="checkbox" id="25-4" name="25" value="Nenhuma das opções">
+                                    <label class="form-label text-black" for="25-4">Nenhuma das opções</label>
+                                </div>
+
+                            </fieldset>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="26" class="form-label fs-5 text-black">26) O resultado da última prestação de contas do município foi:</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="26-1" name="26" value="Aprovada" required>
+                                <label class="form-check-label fs-6 text-black" for="26-1">Aprovada</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="26-0" name="26" value="Aprovada com ressalvas">
+                                <label class="form-check-label fs-6 text-black" for="26-0">Aprovada com ressalvas</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="26-2" name="26" value="Reprovada">
+                                <label class="form-check-label fs-6 text-black" for="26-2">Reprovada</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="26-3" name="26" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="26-3">Não sei informar</label>
+                            </div>                         
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="27" class="form-label fs-5 text-black">27) Você sabe quais os documentos necessários para a realização do parecer da prestação de contas?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="27-1" name="27" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="27-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="27-0" name="27" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="27-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="28" class="form-label fs-5 text-black">28) O CAE acompanhou os processos de compra para a alimentação escolar (licitação e chamada pública) durante o ano de 2021?</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="28-1" name="28" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="28-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="28-0" name="28" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="28-0">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="28-2" name="28" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="28-2">Não sei informar</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="29" class="form-label fs-5 text-black">29) O CAE solicitou à prefeitura as notas fiscais de compras de alimentos para verificação de como o recurso foi utilizado durante o ano de 2021?</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="29-1" name="29" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="29-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="29-0" name="29" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="29-0">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="29-2" name="29" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="29-2">Não sei informar</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="30" class="form-label fs-5 text-black">30) Você sabe quanto o Governo Federal repassa anualmente para o município para o Programa de Alimentação Escolar?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="30-1" name="30" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="30-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="30-0" name="30" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="30-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="30.1" class="mb-3 d-none">
+                        <label for="30.1" class="form-label fs-5 text-black">30.1) Aproximadamente quanto?</label>
+
+                        <textarea name="30.1" type="textfield" class="form-control border-secondary" id="floatingInputGrid" ></textarea>
+    
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="31" class="form-label fs-5 text-black">31) Você sabe se a prefeitura complementa a verba do Governo Federal para o Programa de Alimentação Escolar?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="31-1" name="31" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="31-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="31-0" name="31" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="31-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="31.1" class="mb-3 d-none">
+                        <label for="31.1" class="form-label fs-5 text-black">31.1) Aproximadamente quanto?</label>
+                        <div class="row">
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="31.1-1" name="31.1" value="Menos que 50% do valor que o FNDE repassa" >
+                                <label class="form-check-label fs-6 text-black" for="31.1-1">Menos que 50% do valor que o FNDE repassa</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="31.1-0" name="31.1" value="Entre 50% a 90% do valor que o FNDE repassa">
+                                <label class="form-check-label fs-6 text-black" for="31.1-0">Entre 50% a 90% do valor que o FNDE repassa</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="31.1-2" name="31.1" value="Mais que 100% do valor que o FNDE repassa">
+                                <label class="form-check-label fs-6 text-black" for="31.1-2">Mais que 100% do valor que o FNDE repassa</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="31.1-3" name="31.1" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="31.1-3">Não sei informar</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="31.1-4" name="31.1" value="O município não repassa recurso próprio">
+                                <label class="form-check-label fs-6 text-black" for="31.1-4">O município não repassa recurso próprio</label>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="32" class="form-label fs-5 text-black">32) O município está utilizando pelo menos 30% do recurso federal enviado ao município para compra de alimentos da Agricultura Familiar?</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="32-1" name="32" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="32-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="32-0" name="32" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="32-0">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="32-2" name="32" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="32-2">Não sei informar</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="33" class="form-label fs-5 text-black">33) O recurso federal repassado ao município para o Programa de Alimentação Escolar é exclusivo para compra de gêneros alimentícios?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="33-1" name="33" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="33-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="33-0" name="33" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="33-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="34" class="form-label fs-5 text-black">34) O CAE realizou vistas as unidades escolares durante o ano 2023?</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="34-1" name="34" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="34-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="34-0" name="34" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="34-0">Não</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="34-2" name="34" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="34-2">Não sei informar</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="35" class="form-label fs-5 text-black">35) Qual a periodicidade definida de visitas as unidades escolares realizadas pelo CAE?</label>
+
+                        <div class="row">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="35-1" name="35" value="Bimestral" required>
+                                <label class="form-check-label fs-6 text-black" for="35-1">Bimestral</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="35-0" name="35" value="Trimestral">
+                                <label class="form-check-label fs-6 text-black" for="35-0">Trimestral</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="35-2" name="35" value="Semestral">
+                                <label class="form-check-label fs-6 text-black" for="35-2">Semestral</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="35-3" name="35" value="Anual">
+                                <label class="form-check-label fs-6 text-black" for="35-3">Anual</label>
+                            </div>        
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="35-4" name="35" value="Quando solicitada">
+                                <label class="form-check-label fs-6 text-black" for="35-4">Quando solicitada</label>
+                            </div>  
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="35-5" name="35" value="Não há periodicidade definida">
+                                <label class="form-check-label fs-6 text-black" for="35-5">Não há periodicidade definida</label>
+                            </div>  
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="35-6" name="35" value="Não sei informar">
+                                <label class="form-check-label fs-6 text-black" for="35-6">Não sei informar</label>
+                            </div>  
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="36" class="form-label fs-5 text-black">36) Quantas visitas você fez às escolas no ano de 2023?</label>
+                        <div class="row">
+                          
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="36-0" name="36" value="Nenhuma">
+                                <label class="form-check-label fs-6 text-black" for="36-0">Nenhuma</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="36-1" name="36" value="1 a 3">
+                                <label class="form-check-label fs-6 text-black" for="36-1">1 a 3</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="36-2" name="36" value="Mais de 4">
+                                <label class="form-check-label fs-6 text-black" for="36-2">Mais de 4</label>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="37" class="form-label fs-5 text-black">37) Como você considera a condição (conservação das paredes, pisos, equipamentos, etc) das cozinhas das escolas de zona urbana?</label>
+                        <div class="row">
+                          
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="37-0" name="37" value="Adequada">
+                                <label class="form-check-label fs-6 text-black" for="37-0">Adequada</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="37-1" name="37" value="Inadequada">
+                                <label class="form-check-label fs-6 text-black" for="37-1">Inadequada</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="37-2" name="37" value="Não conheço">
+                                <label class="form-check-label fs-6 text-black" for="37-2">Não conheço</label>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="38" class="form-label fs-5 text-black">38) Como você considera a condição (conservação das paredes, pisos, equipamentos, etc) das cozinhas das escolas de zona rural?</label>
+                        <div class="row">
+                          
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="38-0" name="38" value="Adequada">
+                                <label class="form-check-label fs-6 text-black" for="38-0">Adequada</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="38-1" name="38" value="Inadequada">
+                                <label class="form-check-label fs-6 text-black" for="38-1">Inadequada</label>
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="38-2" name="38" value="Não conheço">
+                                <label class="form-check-label fs-6 text-black" for="38-2">Não conheço</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="38-3" name="38" value="Não há escolas nas zonas rurais">
+                                <label class="form-check-label fs-6 text-black" for="38-3">Não há escolas nas zonas rurais</label>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="39" class="form-label fs-5 text-black">39) Você conhece o Centro Colaborador em Alimentação e Nutrição Escolar - MegaForms?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="39-1" name="39" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="39-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="39-0" name="39" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="39-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="40" class="form-label fs-5 text-black">40) Você já participou de alguma atividade promovida pelo MegaForms TO?</label>
+
+                        <div class="d-flex ">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="40-1" name="40" value="Sim" required>
+                                <label class="form-check-label fs-6 text-black" for="40-1">Sim</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input bg-secondary" type="radio" id="40-0" name="40" value="Não">
+                                <label class="form-check-label fs-6 text-black" for="40-0">Não</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="40.1" class="mb-3 d-none">
+                        <label for="40.1" class="form-label fs-5 text-black">40.1) Quando e onde?</label>
+
+                        <textarea name="40.1" type="textfield" class="form-control border-secondary" id="floatingInputGrid"></textarea>
+    
+                    </div>
+
+                    <div id="41" class="mb-3">
+                        <label for="41" class="form-label fs-5 text-black">41) Quais temas você gostaria que fossem abordados em futuras formações?</label>
+
+                        <textarea name="41" type="textfield" class="form-control border-secondary" id="floatingInputGrid" required></textarea>
+    
+                    </div>
+
+                    <div id="42" class="mb-3">
+                        <label for="42" class="form-label fs-5 text-black">42) O que você espera do CAE, do FNDE, do MegaForms e do nutricionista?</label>
+
+                        <textarea name="42" type="textfield" class="form-control border-secondary" id="floatingInputGrid" required></textarea>
+    
+                    </div>
+                    
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn btn-lg btn-success" value="Enviar">
+                </div>
+
+            
+
+
+</form>
+
+<script>
+    window.onload=()=>{
+        document.getElementById('user_bar').classList.add('d-none')
+        document.querySelector('.sidenav').classList.add('d-none')
+
+    }
+    document.getElementById('2-1').onclick=function(){
+        var element22 = document.getElementById("2.1");
+        element22.classList.remove("d-none");
+    }
+    
+    document.getElementById('2-0').onclick=function(){
+        var element22 = document.getElementById("2.1");
+        element22.classList.add("d-none");
+    }
+    document.getElementById('17-0').onclick=function(){
+        var element171 = document.getElementById("17.1");
+        element171.classList.remove("d-none");
+    }
+    document.getElementById('17-1').onclick=function(){
+        var element171 = document.getElementById("17.1");
+        element171.classList.add("d-none");
+    }
+    document.getElementById('17-2').onclick=function(){
+        var element171 = document.getElementById("17.1");
+        element171.classList.add("d-none");
+    }
+
+    document.getElementById('8-6').onclick=function(){
+        var element86 = document.getElementById("8.1");
+        element86.classList.add("d-none");
+
+        document.getElementById("8-0").checked = false;
+        document.getElementById("8-1").checked = false;
+        document.getElementById("8-2").checked = false;
+        document.getElementById("8-3").checked = false;
+        document.getElementById("8-4").checked = false;
+        document.getElementById("8-5").checked = false;
+    }
+
+    document.getElementById('8-0').onclick=function(){
+        document.getElementById("8-6").checked = false;
+        var element86 = document.getElementById("8.1");
+        element86.classList.remove("d-none");
+    }
+
+    document.getElementById('8-1').onclick=function(){
+        document.getElementById("8-6").checked = false;
+        var element86 = document.getElementById("8.1");
+        element86.classList.remove("d-none");
+
+    }
+
+    document.getElementById('8-2').onclick=function(){
+        document.getElementById("8-6").checked = false;
+        var element86 = document.getElementById("8.1");
+        element86.classList.remove("d-none");
+
+    }
+
+    document.getElementById('8-3').onclick=function(){
+        document.getElementById("8-6").checked = false;
+        var element86 = document.getElementById("8.1");
+        element86.classList.remove("d-none");
+
+    }
+
+    document.getElementById('8-4').onclick=function(){
+        document.getElementById("8-6").checked = false;
+        var element86 = document.getElementById("8.1");
+        element86.classList.remove("d-none");
+
+    }
+
+    document.getElementById('8-5').onclick=function(){
+        document.getElementById("8-6").checked = false;
+        var element86 = document.getElementById("8.1");
+        element86.classList.remove("d-none");
+
+    }
+
+    document.getElementById('18-4').onclick=function(){
+        document.getElementById("18-0").checked = false;
+        document.getElementById("18-1").checked = false;
+        document.getElementById("18-2").checked = false;
+        document.getElementById("18-3").checked = false;
+
+        document.getElementById('18-0').onclick=function(){
+            document.getElementById('18-4').checked = false
+        }
+        document.getElementById('18-1').onclick=function(){
+            document.getElementById('18-4').checked = false
+        }
+        document.getElementById('18-2').onclick=function(){
+            document.getElementById('18-4').checked = false
+        }
+        document.getElementById('18-3').onclick=function(){
+            document.getElementById('18-4').checked = false
+        }
+    }
+    document.getElementById('19-1').onclick=function(){
+        var element191 = document.getElementById("19.1");
+        element191.classList.remove("d-none");
+    }
+
+    document.getElementById('19-0').onclick=function(){
+        var element191 = document.getElementById("19.1");
+        element191.classList.add("d-none");
+    }
+    document.getElementById('19-2').onclick=function(){
+        var element191 = document.getElementById("19.1");
+        element191.classList.add("d-none");
+    }
+
+    document.getElementById('22-1').onclick=function(){
+        var element221 = document.getElementById("22.1");
+        element221.classList.remove("d-none");
+    }
+    document.getElementById('22-2').onclick=function(){
+        var element221 = document.getElementById("22.1");
+        element221.classList.remove("d-none");
+    }
+    document.getElementById('22-0').onclick=function(){
+        var element221 = document.getElementById("22.1");
+        element221.classList.add("d-none");
+    }
+
+    document.getElementById('23-1').onclick=function(){
+        var element231 = document.getElementById("23.1");
+        element231.classList.remove("d-none");
+    }
+    
+    document.getElementById('23-0').onclick=function(){
+        var element231 = document.getElementById("23.1");
+        element231.classList.add("d-none");
+    }
+
+    document.getElementById('25-4').onclick=function(){
+        document.getElementById("25-0").checked = false;
+        document.getElementById("25-1").checked = false;
+        document.getElementById("25-2").checked = false;
+        document.getElementById("25-3").checked = false;
+
+        document.getElementById('25-0').onclick=function(){
+            document.getElementById('25-4').checked = false
+        }
+        document.getElementById('25-1').onclick=function(){
+            document.getElementById('25-4').checked = false
+        }
+        document.getElementById('25-2').onclick=function(){
+            document.getElementById('25-4').checked = false
+        }
+        document.getElementById('25-3').onclick=function(){
+            document.getElementById('25-4').checked = false
+        }
+    }
+
+    document.getElementById('30-1').onclick=function(){
+        var element301 = document.getElementById("30.1");
+        element301.classList.remove("d-none");
+    }
+    
+    document.getElementById('30-0').onclick=function(){
+        var element301 = document.getElementById("30.1");
+        element301.classList.add("d-none");
+    }
+
+    document.getElementById('31-1').onclick=function(){
+        var element311 = document.getElementById("31.1");
+        element311.classList.remove("d-none");
+    }
+    
+    document.getElementById('31-0').onclick=function(){
+        var element311 = document.getElementById("31.1");
+        element311.classList.add("d-none");
+    }
+
+    document.getElementById('31.1-4').onclick=function(){
+        var element311 = document.getElementById("31.1");
+        element311.classList.add("d-none");
+        document.getElementById('31-0').checked = true;
+    }
+    document.getElementById('31.1-3').onclick=function(){
+        var element311 = document.getElementById("31.1");
+        element311.classList.add("d-none");
+        document.getElementById('31-0').checked = true;
+    }
+
+    document.getElementById('40-1').onclick=function(){
+        var element401 = document.getElementById("40.1");
+        element401.classList.remove("d-none");
+    }
+    
+    document.getElementById('40-0').onclick=function(){
+        var element401 = document.getElementById("40.1");
+        element401.classList.add("d-none");
+    }
+</script>

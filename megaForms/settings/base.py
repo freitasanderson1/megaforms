@@ -12,9 +12,14 @@ DEFAULT_APPS = [
     'django.contrib.staticfiles',
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'cadastro',
+    'questionario',
+]
 
-OTHER_APPS = []
+OTHER_APPS = [
+    'django_summernote',
+]
 
 INSTALLED_APPS = DEFAULT_APPS + LOCAL_APPS + OTHER_APPS
 
