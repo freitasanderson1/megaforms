@@ -8,9 +8,7 @@ from rest_framework.routers import DefaultRouter
 from cadastro.views import LoginView, SairView, CadastroView
 
 from questionario.views import MegaFormsIndexView, NoticiasView, SobreView, RepositorioView, PoliticaPrivacidadeView
-from questionario.views import QuestionariosIndexView, QuestionariosDetailView, ExportRespostasView
-
-from questionario.views import RelatoriosQuestionariosIndexView, RelatoriosDetailView, RelatoriosComplexosDetailView
+from questionario.views import QuestionariosIndexView, QuestionariosDetailView, ExportRespostasView, RespostasDetailView, RelatorioQuestionarioView, RelatorioQuestionarioRestView
 
 app_name = 'questionario'
 
@@ -27,14 +25,13 @@ urlpatterns = [
     #Questionários
     path('questionarios/', QuestionariosIndexView.as_view(), name='questionariosIndex'),
     path('questionarios/<slug:slug>/', QuestionariosDetailView.as_view(), name='questionariosDetail'),
+    path('respostas/<slug:slug>/', RespostasDetailView.as_view(), name='respostasDetail'),
 
 
     #Relatórios
-    path('relatorios/', RelatoriosQuestionariosIndexView.as_view(), name='relatoriosQuestionariosIndex' ),
-    path('relatorios/<slug:slug>/', RelatoriosDetailView.as_view(), name='relatoriosDetail' ),
-    path('relatorios/complexos/<slug:slug>/', RelatoriosComplexosDetailView.as_view(), name='relatoriosComplexosDetail' ),
+    path('relatorios/<slug:slug>/', RelatorioQuestionarioView.as_view(), name='relatoriosDetail' ),
     path('relatorios/export/<slug:slug>/', ExportRespostasView.as_view(), name='exportQuestionario' ),
-
+    
     #Logins views
     path('login/', LoginView.as_view(), name='login'),
     path('sair/', SairView.as_view(), name='sair'),
@@ -43,7 +40,7 @@ urlpatterns = [
 ]
 
 router = DefaultRouter(trailing_slash=False)
-# router.register(r'api/dados_vendas',VendasApiView, basename='VendasApi')
+router.register(r'api/relatorios',RelatorioQuestionarioRestView, basename='RelatorioApi')
 
 
 urlpatterns += router.urls

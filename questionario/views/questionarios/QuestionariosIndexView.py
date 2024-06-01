@@ -16,26 +16,13 @@ class QuestionariosIndexView(LoginRequiredMixin,BasePermissoesView,TemplateView)
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
 
-        context['questionario'] = TipoQuestionario.objects.filter(ativo=True).order_by('nome')
+        context['questionario'] = TipoQuestionario.objects.filter(quemCadastrou=self.request.session['idUserFake'], ativo=True).order_by('nome')
 
-        # context['perguntas'] = ItemQuestionario.objects.all().filter(ativo=True)
+        respostas = Respostas.objects.filter(questionario__quemCadastrou=self.request.session['idUserFake'], questionario__ativo=True).values('questionario__nome','questionario__slug').distinct()
 
-        if self.ehSuperUser or self.ehGestor:
-
-            context['respondidos'] = Respostas.objects.all().order_by('questionario__id','escola')
-
-                
-        else:
-
-            context['respondidos'] = Respostas.objects.filter(quemCadastrou=self.request.user).order_by('questionario__id','escola')
-
-        context['questionariosRespondidos'] = []
-
-        for resposta in context['respondidos2']:
-
-            context['questionariosRespondidos'].append(resposta.questionario)
-
-        context['questionariosRespondidos'] = list(set(context['questionariosRespondidos']))
-
+        r = list(respostas)
+        r = {x['questionario__nome']:x for x in r}.values()
+        
+        context['questionariosRespondidos'] = r
 
         return context

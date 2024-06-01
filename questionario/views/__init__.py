@@ -12,11 +12,8 @@ from questionario.views.site.PoliticaPrivacidadeView import PoliticaPrivacidadeV
 ##Questionários
 from questionario.views.questionarios.QuestionariosIndexView import QuestionariosIndexView
 from questionario.views.questionarios.QuestionariosDetailView import QuestionariosDetailView
-
-##Relatórios
-### Relatórios de Questionários
-from questionario.views.relatorios.questionarios.RelatoriosQuestionariosIndexView import RelatoriosQuestionariosIndexView
-from questionario.views.relatorios.questionarios.RelatoriosDetailView import RelatoriosDetailView
-from questionario.views.relatorios.questionarios.RelatoriosComplexosDetailView import RelatoriosComplexosDetailView
+from questionario.views.questionarios.RespostasDetailView import RespostasDetailView
 ###
-from questionario.views.relatorios.questionarios.ExportRespostasView import ExportRespostasView
+from questionario.views.relatorios.ExportRespostasView import ExportRespostasView
+from questionario.views.relatorios.RelatorioQuestionarioView import RelatorioQuestionarioView
+from questionario.views.rest.RelatorioQuestionarioRestView import RelatorioQuestionarioRestView

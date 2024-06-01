@@ -14,11 +14,10 @@ class RespostasInline(admin.TabularInline):
 @admin.register(QuemRespondeu)
 class QuemRespondeuAdmin(admin.ModelAdmin):
     list_display = ('retornaQuem',)
+    search_fields = ['nome','sobrenome','cargo']
     inlines = [
         RespostasInline
     ]
-    # autocomplete_fields = ['quemCadastrou',]
-    # readonly_fields = ['quemCadastrou','slug',]
     
     icon_name = 'record_voice_over'
 
@@ -27,6 +26,12 @@ class QuemRespondeuAdmin(admin.ModelAdmin):
         respostas = Respostas.objects.filter(quemRespondeu=obj)
         questionario = respostas.last().questionario.nome if respostas else '(Contatar este usuário, respostas não foram salvas.)'
         # print(f'Quem: {questionario}')
-        quemRespondeu = f'{questionario} - {obj.nome} {obj.sobrenome} - {obj.cargo} de {obj.cidade}'
+        quemRespondeu = f'{questionario} - {obj.nome} {obj.sobrenome}'
+    
+        if obj.cargo:
+            quemRespondeu += f' - {obj.cargo}'
+
+        if obj.cidade:
+            quemRespondeu += f'({obj.cidade})'
 
         return quemRespondeu

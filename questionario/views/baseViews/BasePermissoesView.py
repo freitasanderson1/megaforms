@@ -13,11 +13,10 @@ class BasePermissoesView(View):
         except:
             self.perfil = None
 
-        self.ehEstagiario = request.user.groups.filter(name="Estagiários_MegaForms").exists()
         self.ehGestor = request.user.groups.filter(name="Questionário_Gestor").exists()
         self.ehSuperUser = request.user.is_superuser
         
-        if self.ehEstagiario or self.ehGestor or self.ehSuperUser:
+        if self.ehGestor or self.ehSuperUser:
             self.temPermissaoBase = True
         else:
             self.temPermissaoBase = False
@@ -28,7 +27,6 @@ class BasePermissoesView(View):
         context = super().get_context_data(**kwargs)
 
         context['temPermissaoBase'] = self.temPermissaoBase
-        context['ehEstagiario'] = self.ehEstagiario
         context['ehGestor'] = self.ehGestor
         context['ehSuperUser'] = self.ehSuperUser
         context['perfil'] = self.perfil

@@ -43,8 +43,6 @@
 
           <a class="link-topbar" href="{% url 'questionariosIndex' %}">Questionários</a>
 
-          <a class="link-topbar" href="{% url 'relatoriosQuestionariosIndex' %}">Relatórios</a>
-
         {% endif %}
 
         <a class="link-topbar" href="{% url "repositorio" %}">Documentos</a>
@@ -100,13 +98,11 @@
                 
                 <a class="link-topbar" href="{% url "repositorio" %}">Documentos</a>
                 
-                {% comment %} {% if user.is_authenticated and temPermissaoBase%}
+                {% if user.is_authenticated and temPermissaoBase%}
 
                   <a class="link-topbar" href="{% url 'questionariosIndex' %}">Questionários</a>
         
-                  <a class="link-topbar" href="{% url 'relatoriosQuestionariosIndex' %}">Relatórios</a>
-        
-                {% endif %} {% endcomment %}
+                {% endif %}
 
                 {% if user.is_authenticated %}
 

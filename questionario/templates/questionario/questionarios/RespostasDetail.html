@@ -13,17 +13,21 @@
 
             <h1>Quem Respondeu o <b>{{questionario.nome}}</b>:</h1>
             <br>
-            <h6>Temos <b>{{totalPessoas}}</b> respostas vindo de <b>{{totalCidades}}</b> cidades do Tocantins.</h6>
+            <h6>Temos <b>{{pessoas|length}}</b> respostas.</h6>
         </div>
         <br>
         <div>
             {% for item in pessoas %}
                 <div>
-                    <h5>{{item.cidade}}</h5>
+
+                    {% if item.cidade %}
+                        <h5>{{item.cidade}}</h5>
+                    {% endif %}
+
                     <ul>
                         {% for dado in item.dados %}
                             <li> 
-                                <i>{{dado.pessoa.nome}} {{dado.pessoa.sobrenome}}</i> - <b>{{dado.pessoa.cargo}}</b> 
+                                <i>{{dado.pessoa.nome}} {{dado.pessoa.sobrenome}}</i> {% if elemento.pessoa.cargo %}- <b>{{dado.pessoa.cargo}}</b>{% endif %} 
                                 <small type="button" class="text-primary btn " data-bs-toggle="modal" data-bs-target="#respostas{{dado.pessoa.id}}"><i>Clique para ver respostas</i></small>
                             </li>
 

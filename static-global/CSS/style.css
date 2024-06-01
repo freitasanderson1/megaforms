@@ -11,8 +11,12 @@ body{
 footer{
     bottom: 0;
 }
+ul{
+    list-style-type: none;
+    padding-left: 0;
+}
 #main{
-    height: 100%;
+    min-height: 100%;
 }
 a:visited{
     color: #8C52FF;
@@ -244,5 +248,8 @@ a:hover{
     }
     .ul-docs{
         padding: 0;
+    }
+    .perguntasDisposition{
+        flex-direction: column;
     }
 }

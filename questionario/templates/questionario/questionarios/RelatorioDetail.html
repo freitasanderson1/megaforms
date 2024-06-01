@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block title %}Relatórios de Questionário{% endblock%}
+
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<input type="hidden" id="urlApiRelatorios" name="urlApiRelatorios" value="/api/relatorios/{{slug}}">
+
+<div id="containerRelatorio" class="container justify-content-center w-100 card-body shadow-lg bg-light rounded p-4 mt-4">
+    <div id="divLoading" class="d-flex justify-content-center align-items-center">
+        <div class="spinner-border text-info m-2" role="status">
+            <span class=""></span>
+        </div>
+        <span class="fs-5 text-info">Carregando Relatório</span>
+    </div>
+</div>    
+
+<script src="{% static "JS/RelatorioQuestionario.js" %}"></script>
+
+{% endblock %}

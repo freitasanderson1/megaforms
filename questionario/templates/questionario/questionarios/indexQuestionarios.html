@@ -6,123 +6,51 @@
 
 {% block content %}
 
-    {% if ehEstagiario or ehGestor or ehSuperUser%}
-
-        <div class="controls container ">
-
-            <ul class="mt-4 nav nav-pills nav-fill ">
-                <section class="d-flex fs-4 ">
-
-                    <li data-bs-target="#custom_carousel" data-bs-slide-to="0" class="active"><a href="#">
-                        <a class="nav-link active" aria-current="page" href="#">Questionários</a>
-                    </li>
-
-                    <li data-bs-target="#custom_carousel" data-bs-slide-to="1"><a href="#">
-                        <a class="nav-link" href="#">Respostas</a>
-                    </li>
-                </section>
-
-            </ul>
-        </div>
-
-
-
+    {% if ehGestor or ehSuperUser%}
         {% if messages %}
             <ul class="messages">
             {% for message in messages %}
                 {% if message.tags == "success" %}
                 <div class="alert alert-success alert-dismissible fade show">{{ message|escape }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% else %}
                 <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|escape }}
-                    <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close">X</button>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endif %}
             {% endfor %}
             </ul>
         {% endif %}
-        <div id="custom_carousel" class="carousel slide .bg-light" data-bs-interval="false" data-ride="carousel" data-pause="hover">
+        <div class="controls">
+
+            <ul class="mt-4 nav nav-tabs">
+                <li class="nav-item" data-bs-target="#custom_carousel" data-bs-slide-to="0">
+                    <a class="nav-link active" aria-current="page" href="#">Questionários</a>
+                </li>
+                <li class="nav-item" data-bs-target="#custom_carousel" data-bs-slide-to="1">
+                    <a class="nav-link" href="#">Respostas</a>
+                </li>
+                <li class="nav-item" data-bs-target="#custom_carousel" data-bs-slide-to="2">
+                    <a class="nav-link" href="#">Relatórios</a>
+                </li>
+            </ul>
+        </div>
+        <div id="custom_carousel" class="carousel slide shadow-lg bg-light" data-bs-interval="false" data-ride="carousel" data-pause="hover" style="border-radius:0 0.5rem 0.5rem 0.5rem">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="container justify-content-center w-100 card-body shadow-lg bg-light rounded px-4 pt-1">
-                        <h3 class="ml-3">Questionários Disponíveis:</h3>
+                <div class="carousel-item active p-3">
+                    <div class="container justify-content-center w-100 card-body px-4 pt-1">
+                        <h3 class="ml-3">Seus Questionários:</h3>
 
-                        <div class="container d-flex justify-content-evenly mb-4">
-
-
-                            {% comment %} <div class="">
-                                <h5>Escolares:</h5>
-
-                                <ol>
-
-                                    {% for q in questionario %}
-                                        {% if q.tipoDoQuestionario == 0 %}
-                                            <li>
-
-                                                <a class="text-black" href="{% url 'questionario:questionariosDetail' slug=q.slug%}">
-                                                    {{q.nome}}
-                                                </a>
-
-                                            </li>
-                                        {% endif %}
-
-                                    {% endfor %}
-                                </ol>
-                            </div> {% endcomment %}
-
+                        <div class="d-flex justify-content-start mb-4">
                             <div class="">
-                                <h5>Questionário CAE:</h5>
-
                                 <ol>
-
                                     {% for q in questionario %}
-                                        {% if q.tipoDoQuestionario == 1 %}
-                                            <li>
-
-                                                <a class="text-black" href="{% url 'questionario:questionariosDetail' slug=q.slug%}">
-                                                    {{q.nome}}
-                                                </a>
-
-                                            </li>
-                                        {% endif %}
-
-                                    {% endfor %}
-                                </ol>
-                                <br>
-                                <h5>Agricultura Familiar:</h5>
-
-                                <ol>
-
-                                    {% for q in questionario %}
-                                        {% if q.tipoDoQuestionario == 2 %}
-                                            <li>
-
-                                                <a class="text-black" href="{% url 'questionario:questionariosDetail' slug=q.slug%}">
-                                                    {{q.nome}}
-                                                </a>
-
-                                            </li>
-                                        {% endif %}
-
-                                    {% endfor %}
-                                </ol>
-                                <br>
-                                <h5>Gestão Agricultura Familiar:</h5>
-
-                                <ol>
-
-                                    {% for q in questionario %}
-                                        {% if q.tipoDoQuestionario == 3 %}
-                                            <li>
-
-                                                <a class="text-black" href="{% url 'questionario:questionariosDetail' slug=q.slug%}">
-                                                    {{q.nome}}
-                                                </a>
-
-                                            </li>
-                                        {% endif %}
-
+                                        <li>
+                                            <a class="text-black" href="{% url 'questionariosDetail' slug=q.slug%}">
+                                                {{q.nome}}
+                                            </a>
+                                        </li>
                                     {% endfor %}
                                 </ol>
                             </div>
@@ -131,7 +59,58 @@
                     </div>
                 </div>
 
-                {% include 'questionario/questionarios/includes/respostas/respostasQuestionarioEscolar.html' %}
+                <div class="carousel-item p-3">
+                    <div class="container justify-content-start w-100 mb-4 card-body px-4 pt-1">
+                
+                        <h3>Seus Questionários com Respostas:</h3>
+                
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="">
+                                <ol>
+                                    {% for qr in questionariosRespondidos %}
+                                        <li>
+                                            <a class="text-black" href="{% url 'respostasDetail' slug=qr.questionario__slug%}">
+                                                {{qr.questionario__nome}} -
+                                            <small style="font-size:10px; color:#349eeb">
+                                                <i>
+                                                    Clique para acessar
+                                                </i>
+                                            </small>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item p-3">
+                    <div class="container justify-content-start w-100 mb-4 card-body px-4 pt-1">
+                
+                        <h3>Seus Relatórios sobre os Questionários:</h3>
+                
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="">
+                                <ol>
+                                    {% for qr in questionariosRespondidos %}
+                                        <li>
+                                            <a class="text-black" href="{% url 'relatoriosDetail' slug=qr.questionario__slug%}">
+                                                {{qr.questionario__nome}} -
+                                            <small style="font-size:10px; color:#349eeb">
+                                                <i>
+                                                    Clique para acessar
+                                                </i>
+                                            </small>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     {% endif %}

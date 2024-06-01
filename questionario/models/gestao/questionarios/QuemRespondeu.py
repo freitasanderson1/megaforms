@@ -6,12 +6,12 @@ class QuemRespondeu(models.Model):
     nome = models.TextField(u'Nome', max_length=100, null=False, blank=False)
     sobrenome = models.TextField(u'Sobrenome', max_length=100, null=False, blank=False)
     
-    telefone = models.CharField('Telefone', max_length=20, null=False, blank=False)
-    email = models.EmailField(u'Email', max_length=100, null=False, blank=False)
-    cidade = models.TextField(u'Cidade', max_length=100, null=False, blank=False)
-    cargo = models.TextField(u'Cargo', max_length=100, null=False, blank=False)
+    telefone = models.CharField('Telefone', max_length=20, null=True, blank=True)
+    email = models.EmailField(u'Email', max_length=100, null=True, blank=True)
+    cidade = models.TextField(u'Cidade', max_length=100, null=True, blank=True)
+    cargo = models.TextField(u'Ocupação', max_length=100, null=True, blank=True)
     
-    dataAniversario = models.DateField('Data de Aniversário', null=True, blank=True)
+    idade = models.IntegerField('Idade de quando Respondeu', null=True, blank=True)
 
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=False)
 
@@ -21,4 +21,12 @@ class QuemRespondeu(models.Model):
         ordering = ['id','ativo']
 
     def __str__(self):
-        return f'Item {self.id} - {self.nome} {self.sobrenome} - {self.cargo} ({self.cidade})'
+        retorno = f'Item {self.id} - {self.nome} {self.sobrenome}'
+
+        if self.cargo:
+            retorno += f' - {self.cargo}'
+
+        if self.cidade:
+            retorno += f'({self.cidade})'
+
+        return retorno 

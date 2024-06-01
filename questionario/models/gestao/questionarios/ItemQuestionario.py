@@ -2,9 +2,9 @@ from django.db import models
 from questionario.models import TipoQuestionario
 
 TIPO_QUESTÃO =(
-    (0, 'Escolha'),
+    (0, 'Objetiva'),
     (1, 'Multipla Escolha'),
-    (2, 'Texto'),
+    (2, 'Discursiva'),
 )
 
 class ItemQuestionario(models.Model):

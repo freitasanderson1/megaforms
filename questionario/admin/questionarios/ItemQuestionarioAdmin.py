@@ -10,6 +10,7 @@ class OpcoesItemQuestionarioInline(StackedInline):
 @admin.register(ItemQuestionario)
 class ItemQuestionarioAdmin(admin.ModelAdmin):
     list_display = ('id','questionario','descricao','ativo')
+    search_fields = ['id','questionario','descricao']
     icon_name = 'dehaze'
     inlines = [
         OpcoesItemQuestionarioInline

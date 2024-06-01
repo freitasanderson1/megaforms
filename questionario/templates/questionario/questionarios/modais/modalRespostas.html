@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Respostas de <i>{{elemento.pessoa.nome}} {{elemento.pessoa.sobrenome}}</i> - <b>{{elemento.pessoa.cargo}} de {{elemento.pessoa.cidade}}</b></h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Respostas de <i>{{elemento.pessoa.nome}} {{elemento.pessoa.sobrenome}}</i>{% if elemento.pessoa.idade %} - ({{elemento.pessoa.idade}}) anos {% endif %} {% if elemento.pessoa.cargo %} - <b>{{elemento.pessoa.cargo}} {% endif %}{% if elemento.pessoa.cidade %}de {{elemento.pessoa.cidade}}</b>{% endif %}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
