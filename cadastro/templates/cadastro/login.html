@@ -25,7 +25,7 @@
 
     <div class="logoLogin">
 
-        <img class="logoImg" src="{% static 'assets/IMG/LogoTelaLogin.png' %}" alt="Logo Nutricionistas">
+        <img class="logoImg" src="{% static 'IMG/logoMegaForms-render.png' %}" alt="Logo Nutricionistas">
     </div>
 
 
@@ -35,7 +35,7 @@
             <a class="link-topbar d-flex align-items-center" href="{% url 'indexSite' %}">
                 
                 <div class=" d-flex align-items-center">
-                    <img id="logo_nav"src="{%static 'assets/IMG/logoMegaForms.png' %}" width="50" alt="Logo MegaForms">
+                    <img id="logo_nav"src="{%static 'IMG/logoMegaForms-render.png' %}" width="50" alt="Logo MegaForms">
                     
                     <p class="fs-4" style="padding-left:16px;margin-bottom: 0px;">
                         MegaForms
@@ -57,14 +57,14 @@
 
                                 <div class="form-floating mt-4 mb-4">
                                     <input type="name" name="{{ field.name }}" class="form-control mb-0" id="floatingInputNome" style="min-width:150px; background-color:#F2F2F2; border-radius:20px;" required>
-                                    <label for="floatingInputNome" style="color:#275902;">Nome</label>
+                                    <label for="floatingInputNome" style="color:#5D17EB;">CPF</label>
                                 </div>
 
                             {% else %}
 
                                 <div class="form-floating mt-4 mb-4">
                                     <input type="password" name="{{ field.name }}" class="form-control mb-0" id="floatingInputPassword" placeholder="*********" style="min-width:150px; background-color:#F2F2F2; border-radius:20px;" minlenght="8" maxlength="20" required>
-                                    <label for="floatingInputPassword" style="color:#275902;">{{ field.label_tag }}</label>
+                                    <label for="floatingInputPassword" style="color:#5D17EB;">{{ field.label_tag }}</label>
                                 </div>
 
                             {% endif %}
@@ -82,11 +82,11 @@
                             {% endif %}
 
                 {% endfor %}
-                <button type="submit" class="btn btn-entrar px-5" style="font-size:18px; background-color:#B0D91B; color:#132704; font-weight:500; border-radius:20px;">Entrar</button>
+                <button type="submit" class="btn btn-entrar px-5" style="font-size:18px; background-color:#8C52FF; color:#FFFFFF; font-weight:500; border-radius:20px;">Entrar</button>
                 <br>
-                <small class="">Não tem conta? <a class="py-1 px-3" href="{% url 'cadastro' %}" style="background-color:#B0D91B; font-weight:400; color:#132704; border-radius:20px; text-decoration:none;">Cadastre-se</a></small>
+                <small class="">Não tem conta? <a class="py-1 px-3" href="{% url 'cadastro' %}" style="background-color:#8C52FF; font-weight:400; color:#FFFFFF; border-radius:20px; text-decoration:none;">Cadastre-se</a></small>
                 <br>
-                <small class="">Não lembra a senha? <a href="#" class="py-1 px-3" style="background-color:#275902; font-weight:400; color:#FFFFFF; border-radius:20px; text-decoration:none;">Recupere aqui.</a></small>
+                <small class="">Não lembra a senha? <a href="#" class="py-1 px-3" style="background-color:#5D17EB; font-weight:400; color:#FFFFFF; border-radius:20px; text-decoration:none;">Recupere aqui.</a></small>
             </div>
 
 

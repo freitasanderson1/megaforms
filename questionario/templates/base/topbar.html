@@ -1,4 +1,7 @@
 {% load static %}
+<form id="formSair" method="post" action="{% url 'sair' %}?next={{request.path}}">
+  {% csrf_token %}
+</form>
 
 <div class="topbar container">
 
@@ -48,7 +51,7 @@
         <a class="link-topbar" href="{% url "repositorio" %}">Documentos</a>
         
         {% if user.is_authenticated %}
-            <a class="link-topbar" type="button" id="botao-sair" href="{% url 'sair' %}?next={{request.path}}">
+            <a class="link-topbar" type="button" id="botao-sair">
               <span class="p-3">
                 Sair
               </span>

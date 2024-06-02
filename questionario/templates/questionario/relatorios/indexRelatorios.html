@@ -17,27 +17,6 @@
                         <h3 class="ml-3">Relatórios Disponíveis:</h3>
 
                         <div class="container d-flex justify-content-evenly mb-4">
-                        
-                        {% comment %} 
-
-                            <div class="">
-                                <h5>Escolares:</h5>
-
-                                <ol>
-
-                                    {% for q in questionario %}
-                                            <li>
-
-                                                <a class="text-black" href="{% url 'questionario:relatoriosDetail' slug=q.slug%}">
-                                                    {{q.nome}}
-                                                </a>
-
-                                            </li>
-
-                                    {% endfor %}
-                                </ol>
-                            </div>
-                        {% endcomment %}
 
                             <div class="">
                                 <h5>CAE:</h5>
@@ -48,7 +27,7 @@
                                         {% if q.tipoDoQuestionario == 1 %}
                                             <li>
 
-                                                <a class="text-black" href="{% url 'questionario:relatoriosComplexosDetail' slug=q.slug%}">
+                                                <a class="text-black" href="{% url 'relatoriosComplexosDetail' slug=q.slug%}">
                                                     {{q.nome}}
                                                 </a>
 
@@ -68,7 +47,7 @@
                                         {% if q.tipoDoQuestionario == 3 %}
                                             <li>
 
-                                                <a class="text-black" href="{% url 'questionario:relatoriosComplexosDetail' slug=q.slug%}">
+                                                <a class="text-black" href="{% url 'relatoriosComplexosDetail' slug=q.slug%}">
                                                     {{q.nome}}
                                                 </a>
 

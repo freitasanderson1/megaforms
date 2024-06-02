@@ -23,7 +23,7 @@
                         {% if textSucess == 'Sucesso' %}
                             <div class="alert alert-success bg-success alert-dismissible fade show text-white">
                                 Cadastro realizado com sucesso, você pode fazer login <a class="btn-link nav-link text-white"
-                                href="{% url 'questionario:login' %}">clicando aqui!</a>
+                                href="{% url 'login' %}">clicando aqui!</a>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
                             </div>
                         {% else %}
@@ -159,7 +159,7 @@
                     </ul>
                     <ul>
 
-                        <p class="text-center">Você já tem um cadastro? <a href="{% url 'questionario:login' %}" style="color:#5f45e0;">Entre aqui.</a></p>
+                        <p class="text-center">Você já tem um cadastro? <a href="{% url 'login' %}" style="color:#5f45e0;">Entre aqui.</a></p>
                     </ul>
 
                 </ol>

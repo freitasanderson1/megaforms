@@ -7,6 +7,8 @@ from django.utils.crypto import get_random_string
 from django.contrib.admin.options import TabularInline, StackedInline
 from django.template.loader import get_template
 from django.utils.functional import cached_property
+from django_summernote.admin import SummernoteModelAdmin,SummernoteInlineModelAdmin
+
 
 
 ##############
@@ -57,7 +59,7 @@ class MyForm(StackedInline.form):
         self.nested.formset.save(*args, **kwargs)
         return response
 
-class ItemQuestionarioInline(admin.TabularInline):
+class ItemQuestionarioInline(admin.TabularInline,SummernoteInlineModelAdmin):
     model = ItemQuestionario
     # template = "admin/questionario/itemquestionario_inline.html"
     extra = 1

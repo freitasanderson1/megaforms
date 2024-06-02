@@ -37,6 +37,9 @@ urlpatterns = [
     path('sair/', SairView.as_view(), name='sair'),
     path('cadastro/', CadastroView.as_view(), name='cadastro'),
 
+    path('summernote/', include('django_summernote.urls')),
+    path('editor/', include('django_summernote.urls')),
+    
 ]
 
 router = DefaultRouter(trailing_slash=False)
