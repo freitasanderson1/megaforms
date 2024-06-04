@@ -7,7 +7,7 @@ class OpcoesItemQuestionario(models.Model):
 
     pergunta = models.ForeignKey(ItemQuestionario, verbose_name='Pergunta do Questionario', on_delete=models.PROTECT, null=False, blank=False)
 
-    valor = models.TextField(u'Resposta', max_length=100, null=False, blank=False)
+    valor = models.TextField(u'Resposta', max_length=500, null=False, blank=False)
 
 
     class Meta:

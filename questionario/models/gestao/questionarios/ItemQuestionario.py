@@ -5,6 +5,7 @@ TIPO_QUESTÃO =(
     (0, 'Objetiva'),
     (1, 'Multipla Escolha'),
     (2, 'Discursiva'),
+    (3, 'Associativa'),
 )
 
 class ItemQuestionario(models.Model):
@@ -20,4 +21,4 @@ class ItemQuestionario(models.Model):
         ordering = ['id','ativo']
 
     def __str__(self):
-        return f'Item {self.id} - {self.descricao} - {self.tipo}'
+        return f'Item {self.id} - {self.get_tipo_display()}'

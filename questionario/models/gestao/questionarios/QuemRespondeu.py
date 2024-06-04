@@ -1,5 +1,10 @@
 from django.db import models
 
+SEXO_CHOICES =(
+    (0, 'Feminino'),
+    (1, 'Masculino'),
+)
+
 class QuemRespondeu(models.Model):
     id = models.BigAutoField(primary_key=True)
 
@@ -12,6 +17,8 @@ class QuemRespondeu(models.Model):
     cargo = models.TextField(u'Ocupação', max_length=100, null=True, blank=True)
     
     idade = models.IntegerField('Idade de quando Respondeu', null=True, blank=True)
+    sexo = models.IntegerField(u'Sexo', default=0, choices=SEXO_CHOICES, null=True, blank=True)
+
 
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=False)
 

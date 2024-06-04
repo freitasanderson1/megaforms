@@ -4,6 +4,7 @@ from questionario.admin.questionarios.QuemRespondeuAdmin import QuemRespondeuAdm
 from questionario.admin.questionarios.TipoQuestionariosAdmin import TipoQuestionarioAdmin
 from questionario.admin.questionarios.OpcoesItemQuestionarioAdmin import OpcoesItemQuestionarioAdmin
 from questionario.admin.questionarios.RespostasAdmin import RespostasAdmin
+from questionario.admin.questionarios.ItemAssociativoAdmin import ItemAssociativoAdmin
 ########
 
 ###### Noticias

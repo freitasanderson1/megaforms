@@ -1,21 +1,27 @@
 from django.contrib import admin
 from django import forms
 from django.contrib.admin.options import StackedInline
-from questionario.models import ItemQuestionario, OpcoesItemQuestionario
+from questionario.models import ItemQuestionario, OpcoesItemQuestionario, ItemAssociativo
 from django_summernote.admin import SummernoteModelAdmin
 
 class OpcoesItemQuestionarioInline(StackedInline):
     extra = 0
     model = OpcoesItemQuestionario
 
+class ItemAssociativoInline(StackedInline):
+    extra = 0
+    model = ItemAssociativo
+
 @admin.register(ItemQuestionario)
 class ItemQuestionarioAdmin(SummernoteModelAdmin):
     list_display = ('id','questionario','descricao','ativo')
     search_fields = ['id','questionario','descricao']
+    autocomplete_fields = ['questionario']
     summernote_fields = ('descricao')
     icon_name = 'dehaze'
     inlines = [
-        OpcoesItemQuestionarioInline
+        OpcoesItemQuestionarioInline,
+        ItemAssociativoInline
     ]
     actions = ['criarOpcoesQuestionarioEscolar']
     # class Media:

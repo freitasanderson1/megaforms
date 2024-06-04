@@ -3,20 +3,26 @@ html{
     font-family: 'Nunito', sans-serif;
     color: #8C52FF;
     height: 100%;
+    margin: 0;
 }
 body{
-    background-color: #F2F2F2;
+    background-color: #faecff;
     height: 100%;
+    margin: 0;
+}
+#main{
+    min-height: calc(100vh - 100px);
 }
 footer{
+    width: 100%;
+    background-color: #E5E5E5;
+    text-align: center;
+    padding: 1rem 0;
     bottom: 0;
 }
 ul{
     list-style-type: none;
     padding-left: 0;
-}
-#main{
-    min-height: 100%;
 }
 a:visited{
     color: #8C52FF;
@@ -26,6 +32,14 @@ a:hover{
 }
 .topbar{
     padding-top: 2.5vh;
+}
+.btn-primary{
+    background-color: #8C52FF;
+    border-color: #8C52FF;
+}
+.btn-primary:hover{
+    background-color: #5d17eb;
+    border-color: #5d17eb;
 }
 .link-footer{
     font-weight: 300;
@@ -50,11 +64,8 @@ a:hover{
     height: 40vh;
 }
 .card{
-    height: 30vh;
-    width: 30%;
     background-color: #FFFFFF;
     border: 0;
-    border-radius: 39px;
 }
 .card-title{
     font-weight: 900;
