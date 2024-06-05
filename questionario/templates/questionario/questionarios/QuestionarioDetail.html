@@ -107,15 +107,16 @@
 
 							{% elif item.tipo == 3 %}
 								<div class="d-flex align-items-center">
+									<input type="hidden" id="rangeAssoativa-{{item.id}}" name="rangeAssoativa-{{item.id}}" value="{{item.opcoesitemquestionario_set.all|length}}">
 									<div class="d-flex flex-column" style="min-width: 35%;">
 										{% for opcao in item.opcoesitemquestionario_set.all %}
-											<span>{{opcao.valor}}</span>
+											<span id="opcao-{{item.id}}-{{forloop.counter}}" data-opcao="{{opcao.id}}">{{forloop.counter}}-{{opcao.valor}}</span>
 										{% endfor %}
 									</div>
 									<div class="d-flex flex-column">
 										{% for assoativa in item.itemassociativo_set.all %}
 											<div class="d-flex align-items-center my-1">
-												<input class="form-control m-0 mx-2 assoativa" id="{{assoativa.id}}" type="text" style="width:3rem; height:2.5rem;" required>
+												<input class="form-control m-0 mx-2 assoativa" id="{{assoativa.id}}" data-item="{{item.id}}" type="text" style="width:3rem; height:2.5rem;" required>
 												<span>{{assoativa.valor}}</span>
 											</div>
 										{% endfor %}

@@ -14,7 +14,7 @@ class ItemAssociativoInline(StackedInline):
 
 @admin.register(ItemQuestionario)
 class ItemQuestionarioAdmin(SummernoteModelAdmin):
-    list_display = ('id','questionario','descricao','ativo')
+    list_display = ('id','questionario','tipo','descricao','ativo')
     search_fields = ['id','questionario','descricao']
     autocomplete_fields = ['questionario']
     summernote_fields = ('descricao')
