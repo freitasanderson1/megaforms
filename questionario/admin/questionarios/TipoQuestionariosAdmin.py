@@ -12,9 +12,10 @@ from django_summernote.admin import SummernoteModelAdmin,SummernoteInlineModelAd
 
 
 ##############
-from questionario.models import TipoQuestionario, ItemQuestionario, OpcoesItemQuestionario
+from questionario.models import TipoQuestionario, ItemQuestionario, OpcoesItemQuestionario, ItemAssociativo
 from questionario.forms import ItemQuestionarioAdminForm
 from questionario.admin import ItemQuestionarioAdmin
+
 class OpcoesItemQuestionarioInline(StackedInline):
     model = OpcoesItemQuestionario
     extra = 1
@@ -97,7 +98,7 @@ class ItemQuestionarioInline(admin.TabularInline,SummernoteInlineModelAdmin):
 
 @admin.register(TipoQuestionario)
 class TipoQuestionarioAdmin(ModelAdmin):
-    list_display = ('id','nome','slug','ativo')
+    list_display = ('id','nome','tipoDoQuestionario','slug','ativo')
     search_fields = ['id','nome','slug']
     inlines = [
         ItemQuestionarioInline,

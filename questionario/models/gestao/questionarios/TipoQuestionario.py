@@ -2,10 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 from slugify import slugify
 
+TIPO_QUESTIONARIO =(
+    (0, 'Pré-Teste'),
+    (1, 'Pós-Teste'),
+)
+
 class TipoQuestionario(models.Model):
     id = models.BigAutoField(primary_key=True)
     nome = models.TextField(u'Nome do Questionário:', max_length=255)
     descricao = models.TextField(u'Descrição do Questionário', max_length=280, null=True, blank=True)
+    tipoDoQuestionario = models.IntegerField(u'Tipos de questionário', default=0, choices=TIPO_QUESTIONARIO, null=True, blank=True)
     slug = models.SlugField('Slug', max_length=150, unique=True, blank=True, null=False)
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=True)
 

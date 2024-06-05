@@ -33,9 +33,9 @@ a:hover{
 .topbar{
     padding-top: 2.5vh;
 }
-.btn-primary{
-    background-color: #8C52FF;
-    border-color: #8C52FF;
+.btn-primary, .bg-primary{
+    background-color: #8C52FF !important;
+    border-color: #8C52FF !important;
 }
 .btn-primary:hover{
     background-color: #5d17eb;
