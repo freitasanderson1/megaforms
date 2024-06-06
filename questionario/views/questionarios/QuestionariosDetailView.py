@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 
-from questionario.models import TipoQuestionario, QuemRespondeu
+from questionario.models import TipoQuestionario, QuemRespondeu, VinculoQuestionario
 from questionario.views import BasePermissoesView
 
 import numpy as np
@@ -17,8 +17,14 @@ class QuestionariosDetailView(BasePermissoesView, TemplateView):
         questionario = TipoQuestionario.objects.get(slug=slugQuestionario)
 
         if questionario.tipoDoQuestionario == 1:
-            qsIdsQuemRespondeu = list(set(questionario.respostas_set.all().values_list('questionario__id',flat=True)))
-            qsQuemRespondeu = QuemRespondeu.objects.filter(id__in=qsIdsQuemRespondeu)
+            vinculo = VinculoQuestionario.objects.filter(questionarioPos=questionario).last()
+
+            print(f"Vinculo: {vinculo.questionarioPre.respostas_set.all().values_list('quemRespondeu__id',flat=True)}")
+
+            qsIdsQuemRespondeuPre = list(set(vinculo.questionarioPre.respostas_set.all().values_list('quemRespondeu__id',flat=True)))
+            qsIdsQuemRespondeuPos = list(set(vinculo.questionarioPos.respostas_set.all().values_list('quemRespondeu__id',flat=True)))
+
+            qsQuemRespondeu = QuemRespondeu.objects.filter(id__in=qsIdsQuemRespondeuPre).exclude(id__in=qsIdsQuemRespondeuPos).order_by('nome')
             
             context['quemRespondeu'] = qsQuemRespondeu
 

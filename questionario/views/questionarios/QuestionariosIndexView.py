@@ -16,9 +16,12 @@ class QuestionariosIndexView(LoginRequiredMixin,BasePermissoesView,TemplateView)
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
 
-        context['questionario'] = TipoQuestionario.objects.filter(quemCadastrou=self.request.session['idUserFake'], ativo=True).order_by('nome')
+        context['questionario'] = TipoQuestionario.objects.filter(ativo=True).order_by('nome')
 
-        respostas = Respostas.objects.filter(questionario__quemCadastrou=self.request.session['idUserFake'], questionario__ativo=True).values('questionario__nome','questionario__slug').distinct()
+        print(f"Session: {self.request.session['idUserFake']}")
+        respostas = Respostas.objects.filter(
+            # questionario__quemCadastrou=self.request.session['idUserFake'], 
+            questionario__ativo=True).values('questionario__nome','questionario__slug').distinct()
 
         r = list(respostas)
         r = {x['questionario__nome']:x for x in r}.values()

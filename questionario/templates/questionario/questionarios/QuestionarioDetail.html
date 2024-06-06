@@ -27,7 +27,11 @@
 			<h1 class="card-header text-black">Questionário - {{questionario.nome}}</h1>
 
 			<div class="card-body p-3">
-				<form action="#" id="formQuestionario">
+				<form action="{% url "questionarioCreate" questionario.id %}" id="formQuestionario" method="POST">
+					{% csrf_token %}
+
+					<input type="hidden" id="tipoQuestionario" name="tipoQuestionario" value="{{questionario.tipoDoQuestionario}}">
+
 					{% if questionario.tipoDoQuestionario == 0 %}
 					
 						<div class="">
@@ -46,7 +50,7 @@
 								<div class="col-md">
 
 									<div class="form-floating">
-										<input name="telefone" type="tel" class="form-control border-secondary mb-0" minlenght="10" maxlength="11" id="inputTelefone" placeholder="Exemplo: 63999397825 ou 6332294500" pattern="[0-9]{10-11}">
+										<input name="telefone" type="text" class="form-control border-secondary mb-0" minlenght="10" maxlength="11" id="inputTelefone" placeholder="Exemplo: 63999397825 ou 6332294500">
 										<label for="inputTelefone">Telefone</label>
 										<small class="ml-4 text-muted">DDD e Número. Exemplo:<i> 63999397825 ou 6332294500.</i></small>
 									</div>
@@ -74,28 +78,43 @@
 								</div>
 
 								<div class="col-md">
-									<div class="col-md">
-										<div class="form-floating">
-											<input name="cargo" type="text" class="form-control border-secondary" id="floatingInputGrid" minlength="3" maxlength="50" placeholder=" " value="">
-											<label for="floatingInputGrid">Profissão</label>
-										</div>
+									<div class="form-floating">
+										<input name="cargo" type="text" class="form-control border-secondary" id="floatingInputGrid" minlength="3" maxlength="50" placeholder=" " value="">
+										<label for="floatingInputGrid">Profissão</label>
 									</div>
 								</div>
 
-								<div class="col-md">
+								<div class="col-2">
 									<div class="form-floating">
-										<input name="idade" type="number" class="form-control border-secondary" id="idadeInput" placeholder=" ">
+										<input name="idade" type="number" value="0" class="form-control border-secondary" id="idadeInput" placeholder=" ">
 										<label for="idadeInput">Idade</label>
 									</div>
+								</div>
+								<div class="col-md">
+
+									<select name="selectVinculo" id="selectVinculo"  class="form-select border-secondary" aria-label="Default select example" style="padding: 1rem .75rem;">
+										<option value="2" selected>Selecione o Vínculo</option>
+										<option value="0">Concursado</option>
+										<option value="1">Contratado</option>
+									</select>
+								</div>
+								<div class="col-md">
+
+									<select name="selectSexo" id="selectSexo"  class="form-select border-secondary" aria-label="Default select example" style="padding: 1rem .75rem;">
+										<option selected>Selecione o sexo</option>
+										<option value="0">Feminino</option>
+										<option value="1">Masculino</option>
+									</select>
 								</div>
 
 							</div>
 						</div>
+
 					{% else %}
 						<select name="selectCabecalho" id="selectCabecalho"  class="form-select" aria-label="Default select example">
+							<option selected>Selecione a pessoa que respondeu o Pré-Teste</option>
 							{% for cabecalho in quemRespondeu %}
-								<option selected>Selecione a pessoa que respondeu o Pré-Teste</option>
-								<option value="{{cabecalho.id}}">{{cabecalho}}</option>
+								<option value="{{cabecalho.id}}">{{cabecalho.retornoSelect}}</option>
 							{% endfor %}
 						</select>
 					{% endif %}
@@ -111,7 +130,7 @@
 								<div class="d-flex my-3 flex-column">
 									{% for opcao in item.opcoesitemquestionario_set.all %}
 										<div class="form-check mx-3">
-											<input class="form-check-input" type="radio" name="item-{{item.id}}" id="opcao{{opcao.id}}" value="{{opcao.valor}}" required>
+											<input class="form-check-input" type="radio" name="item-{{item.id}}" id="opcao{{opcao.id}}" value="{{opcao.valor}}">
 											<label class="form-check-label" for="opcao{{opcao.id}}">
 												{{opcao.valor}}
 											</label>
@@ -127,7 +146,7 @@
 										{% for opcao in item.opcoesitemquestionario_set.all %}
 										
 											<div class="d-flex justify-content-start align-items-center">
-												<input class="form-check-input bg-primary p-3 m-2" type="checkbox" id="{{item.id}}-{{opcao.id}}" name="{{item.id}}" value="{{opcao.valor}}">
+												<input class="form-check-input p-3 m-2" type="checkbox" id="{{item.id}}-{{opcao.id}}" name="item-{{item.id}}" value="{{opcao.valor}}">
 												<label class="form-label text-black m-0" for="{{item.id}}-{{opcao.id}}">{{opcao.valor}}</label>
 											</div>
 											
@@ -139,28 +158,28 @@
 
 							{% elif item.tipo == 2 %}
 							
-								<textarea type="text" class="form-control my-3" style="height:10rem;" id="questao-{{item.id}}" name="questao-{{item.id}}"></textarea>
+								<textarea type="text" class="form-control my-3" style="height:10rem;" id="item-{{item.id}}" name="item-{{item.id}}"></textarea>
 
 							{% elif item.tipo == 3 %}
 
 								<div class="d-flex align-items-center">
-									<input type="hidden" id="rangeAssoativa-{{item.id}}" name="rangeAssoativa-{{item.id}}" value="{{item.opcoesitemquestionario_set.all|length}}">
+									<input type="hidden" id="rangeAssociativa-{{item.id}}" name="rangeAssociativa-{{item.id}}" value="{{item.opcoesitemquestionario_set.all|length}}">
 									<div class="d-flex flex-column" style="min-width: 35%;">
 										{% for opcao in item.opcoesitemquestionario_set.all %}
 											<span id="opcao-{{item.id}}-{{forloop.counter}}" data-opcao="{{opcao.id}}">{{forloop.counter}}-{{opcao.valor}}</span>
 										{% endfor %}
 									</div>
 									<div class="d-flex flex-column">
-										{% for assoativa in item.itemassociativo_set.all %}
+										{% for associativa in item.itemassociativo_set.all %}
 											<div class="d-flex align-items-center my-1">
-												<input class="form-control m-0 mx-2 assoativa" id="assoativa-{{item.id}}-{{assoativa.id}}" 
+												<input class="form-control m-0 mx-2 associativa" id="associativa-{{item.id}}-{{associativa.id}}"
+													name="associativa-{{item.id}}-{{associativa.id}}"  
 													maxlength="{% if item.itemassociativo_set.all|length > 9%}2{% else %}1{% endif %}" 
 													data-maxvalue="{{item.opcoesitemquestionario_set.all|length}}" 
 													data-item="{{item.id}}" 
-													type="text" style="width:3rem; height:2.5rem;" 
-													required
+													type="text" style="width:3rem; height:2.5rem;"
 												>
-												<span>{{assoativa.valor}}</span>
+												<span>{{associativa.valor}}</span>
 											</div>
 										{% endfor %}
 									</div>

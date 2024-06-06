@@ -34,7 +34,7 @@ class RespostasDetailView(LoginRequiredMixin, BasePermissoesView, TemplateView):
             cidades = sorted(list(set(cidades)))
             totalPessoas = list(set(totalPessoas))
 
-            pessoas = QuemRespondeu.objects.filter(id__in=totalPessoas).order_by('cidade')
+            pessoas = QuemRespondeu.objects.filter(id__in=totalPessoas).order_by('nome')
 
             objPessoas = list()
 

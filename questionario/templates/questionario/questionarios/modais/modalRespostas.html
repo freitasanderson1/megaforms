@@ -12,9 +12,15 @@
                         {% for resposta in elemento.respostas %}
                             <li> 
                                 <p>
-                                    <b><i>{{resposta.pergunta.descricao}}</i></b>
+                                    <b>
+                                        <i>
+                                            {{resposta.pergunta.descricao|safe}}
+                                        </i>
+                                    </b>
                                     <br>
-                                    <span>{{resposta.valor}}</span>
+                                    {% if elemento.tipo != 3%}
+                                        <span>{{resposta.valor|safe}}</span>
+                                    {% endif %}
                                 </p>
                             </li>
                         {% endfor %}

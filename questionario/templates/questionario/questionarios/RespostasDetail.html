@@ -11,9 +11,9 @@
     <div class="container mt-4 mb-4">
         <div>
 
-            <h1>Quem Respondeu o <b>{{questionario.nome}}</b>:</h1>
+            <h1>Quem Respondeu o {{questionario.nome}}:</h1>
             <br>
-            <h6>Temos <b>{{pessoas|length}}</b> respostas.</h6>
+            <h6>Temos {{pessoas.0.dados|length}} respostas.</h6>
         </div>
         <br>
         <div>
@@ -27,11 +27,16 @@
                     <ul>
                         {% for dado in item.dados %}
                             <li> 
-                                <i>{{dado.pessoa.nome}} {{dado.pessoa.sobrenome}}</i> {% if elemento.pessoa.cargo %}- <b>{{dado.pessoa.cargo}}</b>{% endif %} 
-                                <small type="button" class="text-primary btn " data-bs-toggle="modal" data-bs-target="#respostas{{dado.pessoa.id}}"><i>Clique para ver respostas</i></small>
-                            </li>
+                                <span>{{dado.pessoa.nome|safe}} {{dado.pessoa.sobrenome|safe}}</span> 
 
-                            {% include "questionario/questionarios/modais/modalRespostas.html" with elemento=dado %}
+                                {% if dado.pessoa.cargo %}
+                                    - <span>{{dado.pessoa.cargo|safe}}</span>
+                                {% endif %} 
+
+                                <a type="button" class="text-primary btn " data-bs-toggle="modal" data-bs-target="#respostas{{dado.pessoa.id}}"><i>Clique para ver respostas</i></a>
+                                
+                                {% include "questionario/questionarios/modais/modalRespostas.html" with elemento=dado %}
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>

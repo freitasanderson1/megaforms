@@ -8,7 +8,8 @@ from rest_framework.routers import DefaultRouter
 from cadastro.views import LoginView, SairView, CadastroView
 
 from questionario.views import MegaFormsIndexView, NoticiasView, SobreView, RepositorioView, PoliticaPrivacidadeView
-from questionario.views import QuestionariosIndexView, QuestionariosDetailView, ExportRespostasView, RespostasDetailView, RelatorioQuestionarioView, RelatorioQuestionarioRestView
+from questionario.views import QuestionariosIndexView, QuestionariosDetailView, ExportRespostasView, RespostasDetailView, RelatorioQuestionarioView
+from questionario.views import RelatorioQuestionarioRestView, QuestionarioRestView
 
 app_name = 'questionario'
 
@@ -36,6 +37,8 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('sair/', SairView.as_view(), name='sair'),
     path('cadastro/', CadastroView.as_view(), name='cadastro'),
+
+    path('api/questionario/<int:id>/', QuestionarioRestView.as_view(), name='questionarioCreate'),
 
     path('summernote/', include('django_summernote.urls')),
     path('editor/', include('django_summernote.urls')),

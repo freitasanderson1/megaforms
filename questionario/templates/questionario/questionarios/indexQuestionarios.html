@@ -48,7 +48,7 @@
                                     {% for q in questionario %}
                                         <li>
                                             <a class="text-black" href="{% url 'questionariosDetail' slug=q.slug%}">
-                                                {{q.nome}}
+                                                {{q.nome}} - {{q.get_tipoDoQuestionario_display}}
                                             </a>
                                         </li>
                                     {% endfor %}

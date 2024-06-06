@@ -8,6 +8,7 @@ from questionario.models.gestao.questionarios.OpcoesItemQuestionario import Opco
 from questionario.models.gestao.questionarios.ItemDependente import ItemDependente
 from questionario.models.gestao.questionarios.ItemAssociativo import ItemAssociativo
 
+from questionario.models.gestao.questionarios.VinculoQuestionario import VinculoQuestionario
 ###########
 
 ###### Noticias

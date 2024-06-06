@@ -4,7 +4,11 @@ SEXO_CHOICES =(
     (0, 'Feminino'),
     (1, 'Masculino'),
 )
-
+VINCULO_CHOICES =(
+    (0, 'Concursado'),
+    (1, 'Contratado'),
+    (2, 'Não Respondeu'),
+)
 class QuemRespondeu(models.Model):
     id = models.BigAutoField(primary_key=True)
 
@@ -18,6 +22,7 @@ class QuemRespondeu(models.Model):
     
     idade = models.IntegerField('Idade de quando Respondeu', null=True, blank=True)
     sexo = models.IntegerField(u'Sexo', default=0, choices=SEXO_CHOICES, null=True, blank=True)
+    vinculo = models.IntegerField(u'Vinculo', default=0, choices=VINCULO_CHOICES, null=True, blank=True)
 
 
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=False)
@@ -29,6 +34,17 @@ class QuemRespondeu(models.Model):
 
     def __str__(self):
         retorno = f'Item {self.id} - {self.nome} {self.sobrenome}'
+
+        if self.cargo:
+            retorno += f' - {self.cargo}'
+
+        if self.cidade:
+            retorno += f'({self.cidade})'
+
+        return retorno 
+    
+    def retornoSelect(self):
+        retorno = f'{self.nome} {self.sobrenome}'
 
         if self.cargo:
             retorno += f' - {self.cargo}'

@@ -16,4 +16,6 @@ from questionario.views.questionarios.RespostasDetailView import RespostasDetail
 ###
 from questionario.views.relatorios.ExportRespostasView import ExportRespostasView
 from questionario.views.relatorios.RelatorioQuestionarioView import RelatorioQuestionarioView
+
+from questionario.views.rest.QuestionarioRestView import QuestionarioRestView
 from questionario.views.rest.RelatorioQuestionarioRestView import RelatorioQuestionarioRestView
