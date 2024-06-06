@@ -179,7 +179,32 @@ function insertRelatorio(data){
                         </h4>
                         <div class="d-flex flex-column">
                             ${ pergunta.respostas.map(function(a){
-                                return `<div class="mx-1 text-secondary"><b>${a.quemRespondeu.nome} ${a.quemRespondeu.sobrenome}:</b> ${(a.valor)}`
+                                if(a.valor){
+                                    return `<div class="mx-1 text-secondary"><b>${a.quemRespondeu.nome} ${a.quemRespondeu.sobrenome}:</b> ${(a.valor)}</div>`
+                                }
+                            }).join(' ')}
+                        </div>
+                        <hr>
+                    `)
+                    break;
+                case 3:
+                    $('#containerPerguntas').append(`
+                        <div id="container-Pergunta-${pergunta.id}">
+                            <h1 class="fs-5 text-info text-center">
+                                ${pergunta.descricao}
+                            </h1>
+                        </div>
+                    `)
+
+                    $(`#container-Pergunta-${pergunta.id}`).append(`
+                        <h4 class="fs-6 text-secondary text-center">
+                            Disposição das respostas:
+                        </h4>
+                        <div class="d-flex flex-column">
+                            ${ pergunta.respostas.map(function(a){
+                                if(a.valor){
+                                    return `<div class="mx-1 text-secondary"><b>${a.quemRespondeu.nome} ${a.quemRespondeu.sobrenome}:</b> ${(a.valor)}</div>`
+                                }
                             }).join(' ')}
                         </div>
                         <hr>

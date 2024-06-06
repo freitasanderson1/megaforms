@@ -7,4 +7,4 @@ class ItemAssociativoSerializer(serializers.ModelSerializer):
 
     model = ItemAssociativo
     
-    fields = ['id, valor']
+    fields = '__all__'

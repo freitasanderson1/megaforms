@@ -33,7 +33,7 @@
                                     - <span>{{dado.pessoa.cargo|safe}}</span>
                                 {% endif %} 
 
-                                <a type="button" class="text-primary btn " data-bs-toggle="modal" data-bs-target="#respostas{{dado.pessoa.id}}"><i>Clique para ver respostas</i></a>
+                                <a type="button" class="text-primary btn " data-bs-toggle="modal" data-bs-target="#respostas{{dado.pessoa.id}}" onClick="assoativaFunction({{dado.pessoa.id}})"><i>Clique para ver respostas</i></a>
                                 
                                 {% include "questionario/questionarios/modais/modalRespostas.html" with elemento=dado %}
                             </li>
@@ -45,7 +45,11 @@
         </div>
     </div>
 </div>     
-
+<script>
+    function assoativaFunction(){
+        console.log('Teste')
+    }
+</script>
 
 
 {% endblock %}

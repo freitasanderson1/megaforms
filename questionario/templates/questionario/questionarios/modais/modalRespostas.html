@@ -7,25 +7,180 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div>
-                    <ol>
-                        {% for resposta in elemento.respostas %}
-                            <li> 
-                                <p>
-                                    <b>
-                                        <i>
-                                            {{resposta.pergunta.descricao|safe}}
-                                        </i>
-                                    </b>
-                                    <br>
-                                    {% if elemento.tipo != 3%}
-                                        <span>{{resposta.valor|safe}}</span>
-                                    {% endif %}
-                                </p>
-                            </li>
-                        {% endfor %}
-                    </ol>
+					
+                <div class="">
+
+                    <div class="row g-2">
+
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input disabled name="nome" type="text" class="form-control border-secondary" id="inputNome" minlength="5" maxlength="50" placeholder=" " value="{{elemento.pessoa.nome}} {{elemento.pessoa.sobrenome}}" required>
+                                <label for="inputNome">Nome Completo</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-md">
+
+                            <div class="form-floating">
+                                <input disabled name="telefone" type="text" class="form-control border-secondary mb-0" value="{{elemento.pessoa.telefone}}" minlenght="10" maxlength="11" id="inputTelefone" placeholder="Exemplo: 63999397825 ou 6332294500">
+                                <label for="inputTelefone">Telefone</label>
+                                <small class="ml-4 text-muted">DDD e Número. Exemplo:<i> 63999397825 ou 6332294500.</i></small>
+                            </div>
+                        </div>
+
+                        <div class="col-8" style="min-width: 268px;">
+                            <div class="form-floating">
+                                <input disabled name="email" type="email" value="{{elemento.pessoa.email}}" class="form-control border-secondary" id="floatingInput" placeholder="name@example.com">
+                                <label for="floatingInput">Email</label>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row g-2">
+
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input disabled name="cidade" type="text" value="{{elemento.pessoa.cidade}}" class="form-control border-secondary" id="floatingInputGrid" minlength="5" maxlength="50" placeholder=" " value="">
+                                <label for="floatingInputGrid">Cidade</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md">
+                            <div class="form-floating">
+                                <input disabled name="cargo" type="text" value="{{elemento.pessoa.cargo}}" class="form-control border-secondary" id="floatingInputGrid" minlength="3" maxlength="50" placeholder=" " value="">
+                                <label for="floatingInputGrid">Profissão</label>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div class="form-floating">
+                                <input disabled name="idade" type="number" value="{{elemento.pessoa.idade}}" class="form-control border-secondary" id="idadeInput" placeholder=" ">
+                                <label for="idadeInput">Idade</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+
+                            <select disabled name="selectVinculo" id="selectVinculo"  class="form-select border-secondary" aria-label="Default select example" style="padding: 1rem .75rem;">
+                                <option value="2" {% if elemento.pessoa.vinculo == 2%} selected {% endif %}>Selecione o Vínculo</option>
+                                <option value="0" {% if elemento.pessoa.vinculo == 0%} selected {% endif %}>Concursado</option>
+                                <option value="1" {% if elemento.pessoa.vinculo == 1%} selected {% endif %}>Contratado</option>
+                            </select>
+                        </div>
+                        <div class="col-md">
+
+                            <select disabled name="selectSexo" id="selectSexo"  class="form-select border-secondary" aria-label="Default select example" style="padding: 1rem .75rem;">
+                                <option value="0" {% if elemento.pessoa.sexo == 0%} selected {% endif %}>Feminino</option>
+                                <option value="1" {% if elemento.pessoa.sexo == 1%} selected {% endif %}>Masculino</option>
+                            </select>
+                        </div>
+
+                    </div>
                 </div>
+
+            <hr>
+            {% for item in questionario.itemquestionario_set.all %}
+                <div class="mx-3">
+
+                    <span class="fw-bold text-black" id="questao-{{item.id}}" data-tipo="{{item.tipo}}">{{forloop.counter}})</span>{{item.descricao|safe}}
+
+                    {% if item.tipo == 0 %}
+
+                        <div class="d-flex my-3 flex-column">
+                            {% for opcao in item.opcoesitemquestionario_set.all %}
+                                <div class="form-check mx-3">
+                                    <label class="form-check-label" for="opcao{{opcao.id}}">
+                                        <span 
+                                            {% for resposta in elemento.respostas %}
+                                                {% if resposta.valor and resposta.pergunta.id == item.id and resposta.valor == opcao.valor%} class="fw-bold text-success"{% endif %}
+                                            {% endfor %}            
+                                        >
+                                            {{opcao.valor}}
+                                        </span>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    {% elif item.tipo == 1 %}
+
+                        <div class="d-flex flex-column">
+                            <fieldset class="my-2">
+
+                                {% for opcao in item.opcoesitemquestionario_set.all %}
+                                
+                                    <div class="d-flex justify-content-start align-items-center">
+                                        <input disabled class="form-check-input p-3 m-2" type="checkbox" id="{{item.id}}-{{opcao.id}}" name="item-{{item.id}}" value="{{opcao.valor}}"
+                                        {% for resposta in elemento.respostas %}
+                                            {% if resposta.valor and resposta.pergunta.id == item.id and resposta.valor == opcao.valor%} checked {% endif %}
+                                        {% endfor %}   
+                                        >
+                                        <label class="form-label text-black m-0" for="{{item.id}}-{{opcao.id}}">
+                                            <span 
+                                            {% for resposta in elemento.respostas %}
+                                                {% if resposta.valor and resposta.pergunta.id == item.id and resposta.valor == opcao.valor%} class="fw-bold text-success"{% endif %}
+                                            {% endfor %}>
+                                                {{opcao.valor}}
+                                            </span>
+                                        </label>
+                                    </div>
+                                    
+                                {% endfor %}
+
+                            </fieldset>
+                            
+                        </div>
+
+                    {% elif item.tipo == 2 %}
+                    
+                        <textarea type="text" class="form-control my-3" style="height:10rem;" id="item-{{item.id}}" name="item-{{item.id}}">
+                            {% for resposta in elemento.respostas %}
+                                {% if resposta.valor and resposta.pergunta.id == item.id and resposta.valor == opcao.valor%} value="{{resposta.valor}}" {% endif %}
+                            {% endfor %}
+                        </textarea>
+
+                    {% elif item.tipo == 3 %}
+
+                        {% for resposta in elemento.respostas %}
+
+                            {% if resposta.valor and resposta.pergunta.id == item.id %}
+                                <input type="hidden" id="valueAssoativa-{{item.id}}" data-target="{{item.id}}" value="{{resposta.valor}}">
+                            {% endif %}
+
+                        {% endfor %}
+
+                        <div class="d-flex align-items-center">
+                            <input disabled type="hidden" id="rangeAssociativa-{{item.id}}" name="rangeAssociativa-{{item.id}}" value="{{item.opcoesitemquestionario_set.all|length}}">
+                            <div class="d-flex flex-column" style="min-width: 35%;">
+                                {% for opcao in item.opcoesitemquestionario_set.all %}
+                                    <span id="opcao-{{item.id}}-{{forloop.counter}}" data-opcao="{{opcao.id}}">{{forloop.counter}}-{{opcao.valor}}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="d-flex flex-column">
+                                {% for associativa in item.itemassociativo_set.all %}
+                                    <div class="d-flex align-items-center my-1">
+                                        <input disabled class="form-control m-0 mx-2 associativa" id="associativa-{{item.id}}-{{associativa.id}}"
+                                            name="associativa-{{item.id}}-{{associativa.id}}"  
+                                            maxlength="{% if item.itemassociativo_set.all|length > 9%}2{% else %}1{% endif %}" 
+                                            data-maxvalue="{{item.opcoesitemquestionario_set.all|length}}" 
+                                            data-item="{{item.id}}" 
+                                            type="text" style="width:3rem; height:2.5rem;"
+                                        >
+                                        <span>{{associativa.valor}}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    {% endif %}
+                </div>
+            {% endfor %}
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

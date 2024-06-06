@@ -13,4 +13,4 @@ class ItemQuestionarioSerializer(serializers.ModelSerializer):
   class Meta:
 
     model = ItemQuestionario
-    fields = ['id','tipo','descricao','ativo','respostas','alternativas','associacoes']
+    fields = ['id','tipo','descricao','ativo','alternativas','associacoes', 'respostas']
