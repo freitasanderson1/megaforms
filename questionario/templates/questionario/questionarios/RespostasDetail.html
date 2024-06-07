@@ -46,8 +46,28 @@
     </div>
 </div>     
 <script>
-    function assoativaFunction(){
-        console.log('Teste')
+    function assoativaFunction(pessoa){
+
+        $(`#respostas${pessoa} [data-tipo=3]`).each(function(){
+            var idQuestao = this.id.replace('questao-','')
+            var range = $(`#rangeAssociativa-${idQuestao}`).val()
+            var value = $(`#valueAssoativa-${idQuestao}`).val()
+            var listComboValues = value.split(',')
+
+                listComboValues.forEach((item)=>{
+                    var [opcao, associativa] = item.split(':')
+                    // console.log(`Questão: ${idQuestao} - Opção: ${opcao} - Associativa: ${associativa}`)
+                    var opcaoId = $(`#respostas${pessoa} [data-opcao=${opcao}]`)[0].id.replace(`opcao-${idQuestao}-`,'')
+
+                    $(`#respostas${pessoa} #associativa-${idQuestao}-${associativa}`).val(opcaoId)
+
+                    // console.log($(`#associativa-${idQuestao}-${associativa}`).val())
+                    
+                })
+
+            // console.log(`ID: ${idQuestao} - Range: ${range} - Value: ${value}`)
+        })
+
     }
 </script>
 

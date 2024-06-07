@@ -138,18 +138,19 @@
 
                     {% elif item.tipo == 2 %}
                     
-                        <textarea type="text" class="form-control my-3" style="height:10rem;" id="item-{{item.id}}" name="item-{{item.id}}">
+                        <input disabled type="text" class="form-control my-3" id="item-{{item.id}}" name="item-{{item.id}}"
                             {% for resposta in elemento.respostas %}
-                                {% if resposta.valor and resposta.pergunta.id == item.id and resposta.valor == opcao.valor%} value="{{resposta.valor}}" {% endif %}
+                                {% if resposta.valor and resposta.pergunta.id == item.id%} value="{{resposta.valor|safe}}" {% endif %}
                             {% endfor %}
-                        </textarea>
+                        >
+                        </input>
 
                     {% elif item.tipo == 3 %}
 
                         {% for resposta in elemento.respostas %}
 
                             {% if resposta.valor and resposta.pergunta.id == item.id %}
-                                <input type="hidden" id="valueAssoativa-{{item.id}}" data-target="{{item.id}}" value="{{resposta.valor}}">
+                                <input type="hidden" id="valueAssoativa-{{item.id}}" value="{{resposta.valor}}">
                             {% endif %}
 
                         {% endfor %}
