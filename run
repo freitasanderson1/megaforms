@@ -20,17 +20,8 @@ case $1 in
 
     ;;
     *)  
-        tput setaf 32
-        echo "Endereço IP capturado: $ip_address"
         echo "Iniciando Mega Forms"
-        tput setaf 37
 
-        cleanBuild
-        
-        tput setaf 32
-        echo "Sistema acessível por toda a Intranet"
-        tput setaf 37
-
-        python manage.py runserver $ip_address:8000
+        python manage.py runserver 0.0.0.0:8000
     ;;
 esac
