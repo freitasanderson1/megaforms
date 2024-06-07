@@ -40,7 +40,6 @@ urlpatterns = [
 
     path('api/questionario/<int:id>/', QuestionarioRestView.as_view(), name='questionarioCreate'),
 
-    path('.well-known/', include('letsencrypt.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('editor/', include('django_summernote.urls')),
     
