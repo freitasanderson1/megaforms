@@ -5,6 +5,7 @@ from questionario.admin.questionarios.TipoQuestionariosAdmin import TipoQuestion
 from questionario.admin.questionarios.OpcoesItemQuestionarioAdmin import OpcoesItemQuestionarioAdmin
 from questionario.admin.questionarios.RespostasAdmin import RespostasAdmin
 from questionario.admin.questionarios.ItemAssociativoAdmin import ItemAssociativoAdmin
+from questionario.admin.questionarios.ItemCorretoAdmin import ItemCorretoAdmin
 from questionario.admin.questionarios.VinculoQuestionarioAdmin import VinculoQuestionarioAdmin
 ########
 

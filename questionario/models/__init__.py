@@ -7,6 +7,7 @@ from questionario.models.gestao.questionarios.Respostas import Respostas
 from questionario.models.gestao.questionarios.OpcoesItemQuestionario import OpcoesItemQuestionario
 from questionario.models.gestao.questionarios.ItemDependente import ItemDependente
 from questionario.models.gestao.questionarios.ItemAssociativo import ItemAssociativo
+from questionario.models.gestao.questionarios.ItemCorreto import ItemCorreto
 
 from questionario.models.gestao.questionarios.VinculoQuestionario import VinculoQuestionario
 ###########
