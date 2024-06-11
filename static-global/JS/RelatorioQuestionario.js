@@ -240,7 +240,7 @@ function insertRelatorio(data){
 
                     })
 
-                    console.log(dict)
+                    // console.log(dict)
 
                     pergunta.associacoes.map(function(e){
                         listData = []
@@ -250,7 +250,7 @@ function insertRelatorio(data){
                                 data:[dict[e.id][a.id]]
                             })
                         })
-                        console.log(e.valor,listData)
+                        // console.log(e.valor,listData)
 
                         e.valor.length > 50 ? labelAcept = false : labelAcept = true
 
@@ -274,13 +274,62 @@ function insertRelatorio(data){
                         })
 
                     })
+                    if(pergunta.correto[0]){
+                        respostasCorretas = pergunta.correto[0].valor.split(',')
+                        var lrc = []
+                        console.log(respostasCorretas)
+                        pergunta.respostas.map(function(resp){
+                            resp.valor.split(',').map(function(sr){
+                                lrc.push(sr)
+                            })
+                        })
+                        dictRespostasCorretas = {}
+                        var trc = 0
 
-                    $(`#container-Pergunta-${pergunta.id}`).append(`
-                        <hr>
-                        ${labelAcept ? '' : pergunta.associacoes.map(function(a,index){
-                            return `<p>${index+1}) ${a.valor}</p>`
-                        }).join(' ')}
-                    `)
+                        respostasCorretas.map(function(rc){
+                            var rdp = rc.split(':')
+                            dictRespostasCorretas[rdp[0]] = {}
+                            dictRespostasCorretas[rdp[0]]['totalRespostas'] = lrc.filter((l) => l.includes(`${rdp[0]}:`))
+                            dictRespostasCorretas[rdp[0]]['respostasCorretas'] = lrc.filter((l) => l.includes(`${rdp[0]}:`)).filter((r)=> r.includes(`:${rdp[1]}`))
+
+                        })
+
+                        console.log(lrc)
+
+                        $(`#container-Pergunta-${pergunta.id}`).append(`
+                            <hr>
+                            ${respostasCorretas.map(function(rc,index){
+                                var rdp = rc.split(':')
+                                dictRespostasCorretas[rdp[0]] = {}
+                                dictRespostasCorretas[rdp[0]]['totalRespostas'] = lrc.filter((l) => l.includes(`${rdp[0]}:`))
+                                dictRespostasCorretas[rdp[0]]['respostasCorretas'] = lrc.filter((l) => l.includes(`${rdp[0]}:`)).filter((r)=> r.includes(`:${rdp[1]}`))
+                                perguntaRetorno = pergunta.associacoes.find((a) => a.id==rdp[1])
+
+                                console.log(rdp[0],rdp[1],perguntaRetorno)
+
+                                return `
+                                    <div>
+                                        <p class="text-dark">${index+1}) ${perguntaRetorno.valor}</p>
+                                        <p class="text-dark">Total de Respostas: <span class="fw-bold">${dictRespostasCorretas[rdp[0]]['totalRespostas'].length}</span></p>
+                                        <p class="text-dark">Total de Respostas Corretas: <span class="fw-bold">${dictRespostasCorretas[rdp[0]]['respostasCorretas'].length}</span></p>
+                                        <p class="text-dark">Porcentagem de Respostas Corretas: <span class="fw-bold">${((dictRespostasCorretas[rdp[0]]['respostasCorretas'].length/dictRespostasCorretas[rdp[0]]['totalRespostas'].length)*100).toFixed(2)}%</span></p>
+                                    </div>
+                                    <hr>    
+                                `
+                            }).join(' ')}
+                            
+                        `)
+
+                    }else{
+
+                        $(`#container-Pergunta-${pergunta.id}`).append(`
+                            <hr>
+                            ${labelAcept ? '' : pergunta.associacoes.map(function(a,index){
+                                return `<p>${index+1}) ${a.valor}</p>`
+                            }).join(' ')}
+                        `)
+                        
+                    }
 
                     break;
 

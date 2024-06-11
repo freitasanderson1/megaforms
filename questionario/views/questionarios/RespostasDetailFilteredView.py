@@ -22,7 +22,8 @@ class RespostasDetailFilteredView(BasePermissoesView, TemplateView):
 
             questionario = TipoQuestionario.objects.get(slug=slug)
             perguntas = ItemQuestionario.objects.filter(questionario=questionario,ativo=True)
-            print(f'Questionário: {questionario}')
+            
+            # print(f'Questionário: {questionario}')
             
             cidades = list()
             totalPessoas = list()
@@ -41,7 +42,7 @@ class RespostasDetailFilteredView(BasePermissoesView, TemplateView):
 
             for pessoa in pessoas:
                 for pergunta in perguntas:
-                    existeResposta = respostas.filter(~Q(valor=''),pergunta=pergunta,quemRespondeu=pessoa).exists()
+                    existeResposta = respostas.filter(~Q(valor=''),pergunta__tipo__in=[0,1,3],pergunta=pergunta,quemRespondeu=pessoa).exists()
 
                     # print(f'Resposta: {existeResposta}')
                     if not existeResposta:
@@ -49,7 +50,7 @@ class RespostasDetailFilteredView(BasePermissoesView, TemplateView):
 
             objPessoas = list()
             
-            print(f'Total: {len(excluirPessoas)} - {cidades}')
+            # print(f'Total: {len(excluirPessoas)} - {cidades}')
 
             for cidade in cidades:
                 listaDados = list()
@@ -78,7 +79,7 @@ class RespostasDetailFilteredView(BasePermissoesView, TemplateView):
 
             #     print(cidade,'\n')
 
-            print(f'Pessoas: {len(objPessoas[0]["dados"])}')
+            # print(f'Pessoas: {len(objPessoas[0]["dados"])}')
 
             context['questionario'] = questionario
             context['totalPessoas'] = pessoas.count()

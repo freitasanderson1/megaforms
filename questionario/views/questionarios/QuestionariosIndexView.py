@@ -18,7 +18,7 @@ class QuestionariosIndexView(LoginRequiredMixin,BasePermissoesView,TemplateView)
 
         context['questionario'] = TipoQuestionario.objects.filter(ativo=True).order_by('nome')
 
-        print(f"Session: {self.request.session['idUserFake']}")
+        # print(f"Session: {self.request.session['idUserFake']}")
         respostas = Respostas.objects.filter(
             # questionario__quemCadastrou=self.request.session['idUserFake'], 
             questionario__ativo=True).values('questionario__nome','questionario__slug').distinct()

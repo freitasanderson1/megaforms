@@ -5,9 +5,10 @@ from questionario.models import ItemQuestionario
 class ItemCorreto(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    opcao = models.ForeignKey(ItemQuestionario, verbose_name='Opção Associativa', on_delete=models.PROTECT, null=False, blank=False)
+    opcao = models.ForeignKey(ItemQuestionario, verbose_name='Pergunta', on_delete=models.PROTECT, null=False, blank=False)
 
-    valor = models.BooleanField(u'Correto?',default=False)
+    valor = models.TextField(u'Resposta Correta', max_length=5000, null=False, blank=False)
+
 
 
     class Meta:
