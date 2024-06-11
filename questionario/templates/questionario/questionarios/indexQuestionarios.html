@@ -50,6 +50,7 @@
                                             <a class="text-black" href="{% url 'questionariosDetail' slug=q.slug%}">
                                                 {{q.nome}} - {{q.get_tipoDoQuestionario_display}}
                                             </a>
+                                            
                                         </li>
                                     {% endfor %}
                                 </ol>
@@ -76,6 +77,10 @@
                                                     Clique para acessar
                                                 </i>
                                             </small>
+                                            </a>
+
+                                            <a class="btn btn-primary m-2" href="{% url 'respostasDetailFiltered' slug=qr.questionario__slug%}">
+                                                Filtrado somente com Respostas completas
                                             </a>
                                         </li>
                                     {% endfor %}

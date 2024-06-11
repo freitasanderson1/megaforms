@@ -12,6 +12,8 @@ from questionario.views.site.PoliticaPrivacidadeView import PoliticaPrivacidadeV
 ##Questionários
 from questionario.views.questionarios.QuestionariosIndexView import QuestionariosIndexView
 from questionario.views.questionarios.QuestionariosDetailView import QuestionariosDetailView
+from questionario.views.questionarios.RespostasDetailFilteredView import RespostasDetailFilteredView
+
 from questionario.views.questionarios.RespostasDetailView import RespostasDetailView
 ###
 from questionario.views.relatorios.ExportRespostasView import ExportRespostasView

@@ -27,7 +27,7 @@
                     <ul>
                         {% for dado in item.dados %}
                             <li> 
-                                <span>{{dado.pessoa.nome|safe}} {{dado.pessoa.sobrenome|safe}}</span> 
+                                <span>{{forloop.counter}} - {{dado.pessoa.nome|safe}} {{dado.pessoa.sobrenome|safe}}</span> 
 
                                 {% if dado.pessoa.cargo %}
                                     - <span>{{dado.pessoa.cargo|safe}}</span>

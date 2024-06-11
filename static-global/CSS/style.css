@@ -41,6 +41,9 @@ a:hover{
     background-color: #5d17eb;
     border-color: #5d17eb;
 }
+.btn-primary:visited{
+    color: #ffffff;
+}
 .link-footer{
     font-weight: 300;
     text-decoration: None;

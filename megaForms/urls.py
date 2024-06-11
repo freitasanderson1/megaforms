@@ -8,7 +8,7 @@ from rest_framework.routers import DefaultRouter
 from cadastro.views import LoginView, SairView, CadastroView
 
 from questionario.views import MegaFormsIndexView, NoticiasView, SobreView, RepositorioView, PoliticaPrivacidadeView
-from questionario.views import QuestionariosIndexView, QuestionariosDetailView, ExportRespostasView, RespostasDetailView, RelatorioQuestionarioView
+from questionario.views import QuestionariosIndexView, QuestionariosDetailView, RespostasDetailFilteredView,ExportRespostasView, RespostasDetailView, RelatorioQuestionarioView
 from questionario.views import RelatorioQuestionarioRestView, QuestionarioRestView
 
 app_name = 'questionario'
@@ -26,6 +26,7 @@ urlpatterns = [
     #Questionários
     path('questionarios/', QuestionariosIndexView.as_view(), name='questionariosIndex'),
     path('questionarios/<slug:slug>/', QuestionariosDetailView.as_view(), name='questionariosDetail'),
+    path('questionariosFiltrado/<slug:slug>/', RespostasDetailFilteredView.as_view(), name='respostasDetailFiltered'),
     path('respostas/<slug:slug>/', RespostasDetailView.as_view(), name='respostasDetail'),
 
 
