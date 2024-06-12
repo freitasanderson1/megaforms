@@ -5,8 +5,8 @@ $( document ).ready(function() {
 
 });
 
-async function chamarApiRelatorio(slug){
-    var response = await fetch(slug);
+async function chamarApiRelatorio(url){
+    var response = await fetch(url);
     
     let data = await response.json();
 
@@ -295,33 +295,48 @@ function insertRelatorio(data){
                         })
 
                         console.log(lrc)
+                        console.log(pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length)
 
                         $(`#container-Pergunta-${pergunta.id}`).append(`
-                            <hr>
-                            ${respostasCorretas.map(function(rc,index){
-                                var rdp = rc.split(':')
-                                dictRespostasCorretas[rdp[0]] = {}
-                                dictRespostasCorretas[rdp[0]]['totalRespostas'] = lrc.filter((l) => l.includes(`${rdp[0]}:`))
-                                dictRespostasCorretas[rdp[0]]['respostasCorretas'] = lrc.filter((l) => l.includes(`${rdp[0]}:`)).filter((r)=> r.includes(`:${rdp[1]}`))
-                                perguntaRetorno = pergunta.associacoes.find((a) => a.id==rdp[1])
-
-                                console.log(rdp[0],rdp[1],perguntaRetorno)
-
-                                return `
-                                    <div>
-                                        <p class="text-dark">${index+1}) ${perguntaRetorno.valor}</p>
-                                        <p class="text-dark">Total de Respostas: <span class="fw-bold">${dictRespostasCorretas[rdp[0]]['totalRespostas'].length}</span></p>
-                                        <p class="text-dark">Total de Respostas Corretas: <span class="fw-bold">${dictRespostasCorretas[rdp[0]]['respostasCorretas'].length}</span></p>
-                                        <p class="text-dark">Porcentagem de Respostas Corretas: <span class="fw-bold">${((dictRespostasCorretas[rdp[0]]['respostasCorretas'].length/dictRespostasCorretas[rdp[0]]['totalRespostas'].length)*100).toFixed(2)}%</span></p>
-                                    </div>
-                                    <hr>    
-                                `
-                            }).join(' ')}
-                            
+                            <div class="mx-1 text-dark">
+                                Das <b>${pergunta.respostas.length}</b> respostas, 
+                                <b>${pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length}:</b> destas estão corretas. 
+                                Representando <b>${((pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length/pergunta.respostas.length)*100).toFixed(2)}%</b> de acerto.
+                            </div>
                         `)
 
-                    }else{
+                        // $(`#container-Pergunta-${pergunta.id}`).append(`
+                        //     <hr>
+                        //     <h4 class="fs-6 text-secondary text-center">
+                        //         Disposição das respostas:
+                        //     </h4>
 
+                        //     ${respostasCorretas.map(function(rc,index){
+                        //         var rdp = rc.split(':')
+                        //         dictRespostasCorretas[rdp[0]] = {}
+                        //         dictRespostasCorretas[rdp[0]]['totalRespostas'] = lrc.filter((l) => l.includes(`${rdp[0]}:`))
+                        //         dictRespostasCorretas[rdp[0]]['respostasCorretas'] = lrc.filter((l) => l.includes(`${rdp[0]}:`)).filter((r)=> r.includes(`:${rdp[1]}`))
+                        //         perguntaRetorno = pergunta.associacoes.find((a) => a.id==rdp[1])
+
+                        //         console.log(rdp[0],rdp[1],perguntaRetorno)
+
+                        //         return `
+                        //             <div>
+                        //                 <p class="text-dark">${index+1}) ${perguntaRetorno.valor}</p>
+                        //                 <div class="d-flex justify-content-between">
+                        //                     <span class="text-dark">Total de Respostas: <span class="fw-bold">${dictRespostasCorretas[rdp[0]]['totalRespostas'].length}</span></span>
+                        //                     <span class="text-dark">Total de Respostas Corretas: <span class="fw-bold">${dictRespostasCorretas[rdp[0]]['respostasCorretas'].length}</span></span>
+                        //                     <span class="text-dark">Porcentagem de Respostas Corretas: <span class="fw-bold">${((dictRespostasCorretas[rdp[0]]['respostasCorretas'].length/dictRespostasCorretas[rdp[0]]['totalRespostas'].length)*100).toFixed(2)}%</span></span>
+                        //                 </div>
+                        //             </div>
+                        //             <hr>    
+                        //         `
+                        //     }).join(' ')}
+                            
+                        // `)
+
+                    }else{
+                        console.log('Não tem')
                         $(`#container-Pergunta-${pergunta.id}`).append(`
                             <hr>
                             ${labelAcept ? '' : pergunta.associacoes.map(function(a,index){
