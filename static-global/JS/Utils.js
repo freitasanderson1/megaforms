@@ -6,3 +6,7 @@ $('.nav-link').on('click', function(){
 $('#botao-sair').on('click', function(){
     $('#formSair').submit()
 })
+
+$('#controleSelect').on('click', function(){
+    $('#collapsePessoas').toggleClass('d-none')
+})

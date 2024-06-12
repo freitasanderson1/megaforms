@@ -1,19 +1,34 @@
 $( document ).ready(function() {
     var urlApiRelatorios = $('#urlApiRelatorios').val()
     
-    chamarApiRelatorio(urlApiRelatorios)
+    var listExclude =[]
+    $('.checkboxPessoa:checked').each(function(){listExclude.push(this.value)})
+    
+    chamarApiRelatorio(urlApiRelatorios,listExclude)
 
 });
 
-async function chamarApiRelatorio(url){
+$('#recarregarRelatorio').on('click',function(){
+    $('#collapsePessoas').toggleClass('d-none')
+    $('#divLoading').removeClass('d-none')
+    $('#containerRelatorio').empty()
+
+    var urlApiRelatorios = $('#urlApiRelatorios').val()
+    var listExclude =[]
+    $('.checkboxPessoa:checked').each(function(){listExclude.push(this.value)})
+    
+    chamarApiRelatorio(urlApiRelatorios,listExclude)
+})
+
+async function chamarApiRelatorio(url,exclude=[]){
     var response = await fetch(url);
     
     let data = await response.json();
 
-    insertRelatorio(data)
+    insertRelatorio(data,exclude)
 }
 
-function insertRelatorio(data){
+function insertRelatorio(data,exclude){
 
     // console.log(`Index: ${Object.getOwnPropertyNames(data)}`);
     // console.log(`Dados: ${data}`)
@@ -21,8 +36,8 @@ function insertRelatorio(data){
 
     var container = $('#containerRelatorio')
 
-    container.empty()
-    container.append(`
+    $('#divLoading').addClass('d-none')
+    container.empty().append(`
         <h1 class="text-info fs-4 fw-bold">
             Questionário: <span class="fs-5 fw-normal">${data.nome}</span>
         </h1>
@@ -35,6 +50,17 @@ function insertRelatorio(data){
     `)
     perguntasAssociativas = data.perguntas.filter(pergunta => pergunta.tipo === 3)
     
+    
+    console.log(exclude)
+    data.perguntas.forEach(pergunta => {
+        console.log(`Valor Antes: ${pergunta.respostas.length}`)
+        var respostasFilter = pergunta.respostas.filter(r => exclude.includes(String(r.quemRespondeu.id)));
+
+        pergunta.respostas = respostasFilter
+        console.log(`Valor Depois: ${respostasFilter.length}`)
+
+    })
+
     data.perguntas.forEach(pergunta => {
         if(pergunta.ativo){
 
@@ -277,7 +303,7 @@ function insertRelatorio(data){
                     if(pergunta.correto[0]){
                         respostasCorretas = pergunta.correto[0].valor.split(',')
                         var lrc = []
-                        console.log(respostasCorretas)
+                        // console.log(respostasCorretas)
                         pergunta.respostas.map(function(resp){
                             resp.valor.split(',').map(function(sr){
                                 lrc.push(sr)
@@ -294,8 +320,8 @@ function insertRelatorio(data){
 
                         })
 
-                        console.log(lrc)
-                        console.log(pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length)
+                        // console.log(lrc)
+                        // console.log(pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length)
 
                         $(`#container-Pergunta-${pergunta.id}`).append(`
                             <div class="mx-1 text-dark">
@@ -332,11 +358,9 @@ function insertRelatorio(data){
                         //             <hr>    
                         //         `
                         //     }).join(' ')}
-                            
                         // `)
 
                     }else{
-                        console.log('Não tem')
                         $(`#container-Pergunta-${pergunta.id}`).append(`
                             <hr>
                             ${labelAcept ? '' : pergunta.associacoes.map(function(a,index){
