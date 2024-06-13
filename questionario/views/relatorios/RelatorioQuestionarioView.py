@@ -18,15 +18,16 @@ class RelatorioQuestionarioView(LoginRequiredMixin, BasePermissoesView, Template
         if self.ehGestor or self.ehSuperUser:
             questionario = TipoQuestionario.objects.get(slug=kwargs['slug'])
             
-            perguntas = ItemQuestionario.objects.filter(questionario=questionario,ativo=True)
-            
             vinculo = VinculoQuestionario.objects.get(questionarioPre=questionario) if questionario.tipoDoQuestionario == 0 else VinculoQuestionario.objects.get(questionarioPos=questionario)
 
-            quemRespondeu = list(set(Respostas.objects.filter(Q(questionario=vinculo.questionarioPre)|Q(questionario=vinculo.questionarioPos)).values_list('quemRespondeu',flat=True)))
+            quemRespondeuPre = list(set(Respostas.objects.filter(questionario=vinculo.questionarioPre).values_list('quemRespondeu',flat=True)))
+            quemRespondeuPos = list(set(Respostas.objects.filter(questionario=vinculo.questionarioPos).values_list('quemRespondeu',flat=True)))
 
-            pessoas = QuemRespondeu.objects.filter(id__in=quemRespondeu).order_by('nome','sobrenome')
 
-            print(f"Total: {len(list(set(Respostas.objects.filter(Q(questionario=vinculo.questionarioPre)|Q(questionario=vinculo.questionarioPos)).values_list('quemRespondeu',flat=True).distinct())))}")
+            pessoas = QuemRespondeu.objects.filter(Q(id__in=quemRespondeuPre)&Q(id__in=quemRespondeuPos)).order_by('nome','sobrenome')
+
+            print(f"Total: {len(pessoas)}")
+
             context['pessoas'] = pessoas
             context['slug'] = kwargs['slug']
             
