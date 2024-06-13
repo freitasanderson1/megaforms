@@ -51,13 +51,13 @@ function insertRelatorio(data,exclude){
     perguntasAssociativas = data.perguntas.filter(pergunta => pergunta.tipo === 3)
     
     
-    console.log(exclude)
+    // console.log(exclude)
     data.perguntas.forEach(pergunta => {
-        console.log(`Valor Antes: ${pergunta.respostas.length}`)
+        // console.log(`Valor Antes: ${pergunta.respostas.length}`)
         var respostasFilter = pergunta.respostas.filter(r => exclude.includes(String(r.quemRespondeu.id)));
 
         pergunta.respostas = respostasFilter
-        console.log(`Valor Depois: ${respostasFilter.length}`)
+        // console.log(`Valor Depois: ${respostasFilter.length}`)
 
     })
 
@@ -371,8 +371,6 @@ function insertRelatorio(data,exclude){
                     }
 
                     break;
-
-                
                 
             }
             

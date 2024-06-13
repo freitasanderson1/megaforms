@@ -6,6 +6,7 @@ from questionario.admin.questionarios.OpcoesItemQuestionarioAdmin import OpcoesI
 from questionario.admin.questionarios.RespostasAdmin import RespostasAdmin
 from questionario.admin.questionarios.ItemAssociativoAdmin import ItemAssociativoAdmin
 from questionario.admin.questionarios.ItemCorretoAdmin import ItemCorretoAdmin
+from questionario.admin.questionarios.ItemDependenteAdmin import ItemDependenteAdmin
 from questionario.admin.questionarios.VinculoQuestionarioAdmin import VinculoQuestionarioAdmin
 ########
 
