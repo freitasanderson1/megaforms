@@ -20,7 +20,7 @@ class RelatorioQuestionarioView(LoginRequiredMixin, BasePermissoesView, Template
             
             perguntas = ItemQuestionario.objects.filter(questionario=questionario,ativo=True)
             
-            vinculo = VinculoQuestionario.objects.get(questionarioPre=questionario) if questionario.tipoDoQuestionario == 0 else VinculoQuestionario.get(questionarioPos=questionario)
+            vinculo = VinculoQuestionario.objects.get(questionarioPre=questionario) if questionario.tipoDoQuestionario == 0 else VinculoQuestionario.objects.get(questionarioPos=questionario)
 
             quemRespondeu = list(set(Respostas.objects.filter(Q(questionario=vinculo.questionarioPre)|Q(questionario=vinculo.questionarioPos)).values_list('quemRespondeu',flat=True)))
 
