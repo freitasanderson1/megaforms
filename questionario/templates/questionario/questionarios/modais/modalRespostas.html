@@ -165,7 +165,7 @@
                             <div class="d-flex flex-column">
                                 {% for associativa in item.itemassociativo_set.all %}
                                     <div class="d-flex align-items-center my-1">
-                                        <input disabled class="form-control m-0 mx-2 associativa" id="associativa-{{item.id}}-{{associativa.id}}"
+                                        <input disabled class="form-control m-0 mx-2 associativa" id="associativa-{{item.id}}-{{associativa.id}}-{{elemento.pessoa.id}}"
                                             name="associativa-{{item.id}}-{{associativa.id}}"  
                                             maxlength="{% if item.itemassociativo_set.all|length > 9%}2{% else %}1{% endif %}" 
                                             data-maxvalue="{{item.opcoesitemquestionario_set.all|length}}" 

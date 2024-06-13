@@ -50,8 +50,8 @@
 
         $(`#respostas${pessoa} [data-tipo=3]`).each(function(){
             var idQuestao = this.id.replace('questao-','')
-            var range = $(`#rangeAssociativa-${idQuestao}`).val()
-            var value = $(`#valueAssoativa-${idQuestao}`).val()
+            var range = $(`#respostas${pessoa} #rangeAssociativa-${idQuestao}`).val()
+            var value = $(`#respostas${pessoa} #valueAssoativa-${idQuestao}`).val()
             var listComboValues = value.split(',')
 
                 listComboValues.forEach((item)=>{
@@ -59,9 +59,9 @@
                     // console.log(`Questão: ${idQuestao} - Opção: ${opcao} - Associativa: ${associativa}`)
                     var opcaoId = $(`#respostas${pessoa} [data-opcao=${opcao}]`)[0].id.replace(`opcao-${idQuestao}-`,'')
 
-                    $(`#respostas${pessoa} #associativa-${idQuestao}-${associativa}`).val(opcaoId)
+                    $(`#respostas${pessoa} #associativa-${idQuestao}-${associativa}-${pessoa}`).val(opcaoId)
 
-                    // console.log($(`#associativa-${idQuestao}-${associativa}`).val())
+                    // console.log($(`#respostas${pessoa} #associativa-${idQuestao}-${associativa}-${pessoa}`).val())
                     
                 })
 
