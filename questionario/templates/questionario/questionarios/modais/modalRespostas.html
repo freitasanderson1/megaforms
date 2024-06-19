@@ -117,13 +117,13 @@
                                     <div class="d-flex justify-content-start align-items-center">
                                         <input disabled class="form-check-input p-3 m-2" type="checkbox" id="{{item.id}}-{{opcao.id}}" name="item-{{item.id}}" value="{{opcao.valor}}"
                                         {% for resposta in elemento.respostas %}
-                                            {% if resposta.valor and resposta.pergunta.id == item.id and resposta.valor == opcao.valor%} checked {% endif %}
+                                            {% if resposta.valor and resposta.pergunta.id == item.id and opcao.valor in resposta.valor %} checked {% endif %}
                                         {% endfor %}   
                                         >
                                         <label class="form-label text-black m-0" for="{{item.id}}-{{opcao.id}}">
                                             <span 
                                             {% for resposta in elemento.respostas %}
-                                                {% if resposta.valor and resposta.pergunta.id == item.id and resposta.valor == opcao.valor%} class="fw-bold text-success"{% endif %}
+                                                {% if resposta.valor and resposta.pergunta.id == item.id and opcao.valor in resposta.valor %} class="fw-bold text-success"{% endif %}
                                             {% endfor %}>
                                                 {{opcao.valor}}
                                             </span>

@@ -1,15 +1,31 @@
 from questionario.models import Respostas, OpcoesItemQuestionario, ItemAssociativo
 import numpy as np
 
-for resposta in Respostas.objects.filter(pergunta__tipo=3):
 
-  if resposta.valor:
+# countResp = 0
+# for resposta in Respostas.objects.filter(pergunta__id=7):
+#   if len(resposta.valor.split(',')) > 1:
+#     countResp +=1
+#     print(f'Quem: {resposta.quemRespondeu}')
 
-    # print(f'Valor:{resposta.valor}')
+# print(f'Total: {countResp}')
 
-    for i in resposta.valor.split(','):
-      for a in i.split(':'):
-        print(a)
+# for resposta in Respostas.objects.filter(pergunta__id=7,pergunta__tipo=3):
+
+#   if resposta.valor:
+#       for index,ids in enumerate(resposta.valor.split(',')):
+#         antes = 2 if index == 0 else index-1
+#         depois = 0 if index == 2 else index+1
+#         print(f'Procurando...')
+#         if resposta.valor.split(',')[index] == resposta.valor.split(',')[antes] or resposta.valor.split(',')[index] == resposta.valor.split(',')[depois]:
+#           print(f'ACHEI!!!!')
+
+
+  # print(f'Valor:{resposta.id} - {len(resposta.valor)}')
+
+    # for i in resposta.valor.split(','):
+    #   for a in i.split(':'):
+    #     print(a)
         # if len(a) > 2:
           # a = a.replace(f'{a[:-2]}{a[-2:]}',f'{a[:-2]},{a[-2:]}')
           # print(f'Erro: {a[-2:]} -Correto: {a[:-2]} I: {i}- Resposta: {resposta.valor}')
