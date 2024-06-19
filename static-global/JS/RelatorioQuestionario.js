@@ -309,6 +309,7 @@ function insertRelatorio(data,exclude){
                                 lrc.push(sr)
                             })
                         })
+
                         dictRespostasCorretas = {}
                         var trc = 0
 
@@ -322,13 +323,37 @@ function insertRelatorio(data,exclude){
 
                         // console.log(lrc)
                         // console.log(pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length)
+                        // console.log(pergunta.correto[0].valor)
 
                         $(`#container-Pergunta-${pergunta.id}`).append(`
                             <div class="mx-1 text-dark">
                                 Das <b>${pergunta.respostas.length}</b> respostas, 
-                                <b>${pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length}:</b> destas estão corretas. 
+                                <b>${pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length}</b> destas estão na sequência correta. 
                                 Representando <b>${((pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length/pergunta.respostas.length)*100).toFixed(2)}%</b> de acerto.
                             </div>
+                        `)
+
+                        $(`#container-Pergunta-${pergunta.id}`).append(`
+                            <hr>
+                            <h4 class="fs-6 text-secondary text-center">
+                                Disposição das respostas:
+                            </h4>
+
+                            ${pergunta.associacoes.map(function(associacao,index){                                
+                                return `
+                                    <div>
+                                        <div class="d-flex flex-column">
+                                            <p class="text-dark">${index+1}) ${associacao.valor}</p>
+                                            ${pergunta.alternativas.map((alternativa) =>{
+                                                // console.log(dictRespostasCorretas[alternativa.id]['respostasCorretas'])
+                                                return `<span ${ dictRespostasCorretas[alternativa.id]['respostasCorretas'].filter((r) => r.includes(`${alternativa.id}:${associacao.id}`)).length > 0 ? 'class="fw-bold text-success"':''}>${alternativa.valor}: ${((lrc.filter((l) => l.includes(`${alternativa.id}:${associacao.id}`)).length/lrc.filter((l) => l.includes(`${alternativa.id}:`)).length)*100).toFixed(2)}%</span>`
+                                            }).join('')}
+                                            
+                                        </div>
+                                    </div>
+                                    <hr>    
+                                `
+                            }).join(' ')}
                         `)
 
                         // $(`#container-Pergunta-${pergunta.id}`).append(`
@@ -345,7 +370,7 @@ function insertRelatorio(data,exclude){
                         //         perguntaRetorno = pergunta.associacoes.find((a) => a.id==rdp[1])
 
                         //         console.log(rdp[0],rdp[1],perguntaRetorno)
-
+                                
                         //         return `
                         //             <div>
                         //                 <p class="text-dark">${index+1}) ${perguntaRetorno.valor}</p>

@@ -142,4 +142,3 @@ GitHub.sublime-settings
 *env.py
 docker-compose.yml
 scripts/commands.sh
-megaForms/db.sqlite3
