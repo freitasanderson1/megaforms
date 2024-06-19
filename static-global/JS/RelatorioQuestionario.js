@@ -329,7 +329,7 @@ function insertRelatorio(data,exclude){
                             <div class="mx-1 text-dark">
                                 Das <b>${pergunta.respostas.length}</b> respostas, 
                                 <b>${pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length}</b> destas estão na sequência correta. 
-                                Representando <b>${((pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length/pergunta.respostas.length)*100).toFixed(2)}%</b> de acerto.
+                                Representando <b>${((pergunta.respostas.filter((p) => p.valor == pergunta.correto[0].valor).length/pergunta.respostas.length).toFixed(2)*100).toFixed(2)}%</b> de acerto.
                             </div>
                         `)
 
@@ -346,7 +346,7 @@ function insertRelatorio(data,exclude){
                                             <p class="text-dark">${index+1}) ${associacao.valor}</p>
                                             ${pergunta.alternativas.map((alternativa) =>{
                                                 // console.log(dictRespostasCorretas[alternativa.id]['respostasCorretas'])
-                                                return `<span ${ dictRespostasCorretas[alternativa.id]['respostasCorretas'].filter((r) => r.includes(`${alternativa.id}:${associacao.id}`)).length > 0 ? 'class="fw-bold text-success"':''}>${alternativa.valor}: ${((lrc.filter((l) => l.includes(`${alternativa.id}:${associacao.id}`)).length/lrc.filter((l) => l.includes(`${alternativa.id}:`)).length)*100).toFixed(2)}%</span>`
+                                                return `<span ${ dictRespostasCorretas[alternativa.id]['respostasCorretas'].filter((r) => r.includes(`${alternativa.id}:${associacao.id}`)).length > 0 ? 'class="fw-bold text-success"':''}>${alternativa.valor}: ${((lrc.filter((l) => l.includes(`${alternativa.id}:${associacao.id}`)).length/lrc.filter((l) => l.includes(`${alternativa.id}:`)).length).toFixed(2)*100).toFixed(2)}%</span>`
                                             }).join('')}
                                             
                                         </div>
@@ -377,7 +377,7 @@ function insertRelatorio(data,exclude){
                         //                 <div class="d-flex justify-content-between">
                         //                     <span class="text-dark">Total de Respostas: <span class="fw-bold">${dictRespostasCorretas[rdp[0]]['totalRespostas'].length}</span></span>
                         //                     <span class="text-dark">Total de Respostas Corretas: <span class="fw-bold">${dictRespostasCorretas[rdp[0]]['respostasCorretas'].length}</span></span>
-                        //                     <span class="text-dark">Porcentagem de Respostas Corretas: <span class="fw-bold">${((dictRespostasCorretas[rdp[0]]['respostasCorretas'].length/dictRespostasCorretas[rdp[0]]['totalRespostas'].length)*100).toFixed(2)}%</span></span>
+                        //                     <span class="text-dark">Porcentagem de Respostas Corretas: <span class="fw-bold">${((dictRespostasCorretas[rdp[0]]['respostasCorretas'].length/dictRespostasCorretas[rdp[0]]['totalRespostas'].length).toFixed(2)*100).toFixed(2)}%</span></span>
                         //                 </div>
                         //             </div>
                         //             <hr>    
@@ -403,3 +403,9 @@ function insertRelatorio(data,exclude){
 
     });
 }
+
+Number.prototype.toFixedDown = function(digits) {
+    var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
+        m = this.toString().match(re);
+    return m ? parseFloat(m[1]) : this.valueOf();
+};
